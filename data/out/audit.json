@@ -1,13 +1,13 @@
 {
- "sites": 1037,
+ "sites": 1038,
  "names": {
   "latin_only": 22,
   "repeated_word": 3
  },
  "duplicates": {
-  "candidate_pairs_examined": 6805,
-  "suspicious": 562,
-  "actionable": 62,
+  "candidate_pairs_examined": 6827,
+  "suspicious": 567,
+  "actionable": 63,
   "surfaced": 30,
   "note": "actionable = same place likely, different sources, within 250 m"
  },

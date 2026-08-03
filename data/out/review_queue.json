@@ -1,13 +1,13 @@
 {
  "surfaced_threshold": 0.7,
  "totals": {
-  "all_review_items": 1768,
-  "surfaced": 822,
-  "suppressed_low_score_borderline": 946,
+  "all_review_items": 1781,
+  "surfaced": 823,
+  "suppressed_low_score_borderline": 958,
   "blocked_by_conflicting_id": 752,
   "by_kind": {
    "blocked_by_same_source_constraint": 254,
-   "borderline_match": 1367,
+   "borderline_match": 1380,
    "possible_duplicate_within_source": 147
   }
  },
@@ -23554,6 +23554,38 @@
     "cross_category_types": false,
     "mode": "blended",
     "dist_score": 0.4084
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "manual_curated",
+    "record_id": "manual_maabarat_shimron",
+    "name": "שרידי מעברת שמרון",
+    "lat": 32.704121,
+    "lon": 35.211896,
+    "locality": "נהלל",
+    "category_hint": "historic",
+    "url": "https://amudanan.co.il/"
+   },
+   "b": {
+    "source_id": "osm_wikidata",
+    "record_id": "osm:node/278474222",
+    "name": "תל שימרון",
+    "lat": 32.7038969,
+    "lon": 35.2141406,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://www.openstreetmap.org/node/278474222"
+   },
+   "score": 0.7313,
+   "why": {
+    "name_score": 0.955,
+    "distance_m": 211.5,
+    "gate_m": 350.0,
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.3957
    },
    "kind": "borderline_match"
   },

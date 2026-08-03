@@ -351,6 +351,10 @@ SOURCES = {
     "blue_signs": {"he": "שלטים כחולים, המועצה לשימור אתרי מורשת", "rank": 3},
     "culture_institutions": {"he": "מוסדות תרבות, מקורות ראשוניים", "rank": 3},
     "iicp_culture_table": {"he": "מיפוי מוסדות תרבות, המכון הישראלי למדיניות תרבות", "rank": 4},
+    # Curated by hand from material Matan supplied, kept in data/manual/additions.json. Ranked
+    # above the open crowd-sourced layers because a person checked each entry, and below the
+    # official registers because it is not one.
+    "manual_curated": {"he": "תוספות ידניות של צוות המכון", "rank": 4},
     "osm_wikidata": {"he": "OpenStreetMap ו-Wikidata", "rank": 5},
     "amudanan": {"he": "עמוד ענן", "rank": 6},
     "boundary": {"he": "גבולות שיפוט, הלמ\"ס", "rank": 1},

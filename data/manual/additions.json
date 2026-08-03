@@ -1,0 +1,60 @@
+{
+  "_about": "Hand-curated additions and corrections, maintained in the repository rather than scraped. Each entry states who supplied it and from where, because these claims cannot be re-derived by running the pipeline. Entries whose primary name and position match an existing site merge into it and contribute their names, periods and statuses; entries with no match become new sites.",
+  "_source_id": "manual_curated",
+  "_note_on_amud_anan": "Content sourced from amudanan.co.il appears here ONLY where Matan supplied it manually. The site's legal notice forbids machine downloading, and its text is all-rights-reserved, so facts are recorded and descriptions are written afresh rather than copied. See docs/sources/amudanan.md.",
+  "entries": [
+    {
+      "record_id": "manual_maabarat_shimron",
+      "name": "שרידי מעברת שמרון",
+      "names_alt": ["מעברת שמרון"],
+      "category_hint": "historic",
+      "type": "settlement_heritage",
+      "lat": 32.704121,
+      "lon": 35.211896,
+      "location_precision": "exact",
+      "locality": "נהלל",
+      "year_from": 1950,
+      "year_to": 1958,
+      "periods": ["state"],
+      "description": "מעברה שהוקמה ב-1950 ופעלה עד 1958, ובה כמה מאות תושבים שהגיעו מפולין, מרומניה ומצפון אפריקה. יוצאי המעברה הקימו את מגדל העמק ואת רמת ישי. מהמעברה נותרו משטחי בטון שעליהם עמדו הפחונים, הבדונים וצריפי העץ. הגבעה מגודרת ואין אליה גישה ברכב.",
+      "statuses": {
+        "accessibility": "restricted",
+        "condition": "poor"
+      },
+      "extra": {
+        "elevation_m": 145,
+        "residents_estimate": "500 עד 800",
+        "origin_countries": "פולין, רומניה וצפון אפריקה",
+        "successor_settlements": "מגדל העמק, רמת ישי",
+        "site_condition_note": "נותרו משטחי הבטון בלבד; לפי המקור נגרם לאתר הרס",
+        "access_note": "הגבעה מגודרת, אין עלייה ברכב, ובמקור מופיעה בקשה לא להיכנס עם רכב או אופנוע"
+      },
+      "supplied_by": "מתן חכים",
+      "supplied_on": "2026-08-03",
+      "source_note": "עובדות מתוך דף האתר בעמוד ענן, נמסרו ידנית. תורמי התוכן שם: זאב שקד ואחרים. עדכון אחרון במקור: 13.4.2024. התיאור כאן נכתב מחדש ואינו העתקה של נוסח המקור.",
+      "url": "https://amudanan.co.il/"
+    },
+    {
+      "record_id": "manual_tel_saifan_names",
+      "name": "תל סייפן",
+      "names_alt": ["גבעת עודד", "גבעת עודד הנודד", "תל סיפן"],
+      "_intent": "Add these names and the Mandate-era layer to the EXISTING archaeological site חוּרבת סייפן, 20 m away. The category hint is archaeological on purpose: an entry typed defense_heritage was refused a merge by the cross-category guard, correctly by that rule's own logic, and the point here is that it is one hill whose story runs from antiquity through the Mandate. The British position is recorded in periods and in the description instead of as a competing type.",
+      "category_hint": "archaeological",
+      "type": null,
+      "lat": 32.678938,
+      "lon": 35.197416,
+      "location_precision": "approx_100m",
+      "periods": ["mandate"],
+      "description": "בפסגת התל עמדה עמדת נגד-מטוסים בריטית מתקופת המנדט. הגבעה מכונה גם גבעת עודד או גבעת עודד הנודד.",
+      "extra": {
+        "elevation_m": 98,
+        "mandate_feature": "עמדת נגד-מטוסים בריטית בפסגה",
+        "source_classification_rejected": "המקור מסווג את הנקודה כ'מפל', וזו כנראה שגיאת הזנה שם: התקציר עצמו מתאר גבעה עם עמדה בריטית בפסגה, ולכן הסיווג לא יובא"
+      },
+      "supplied_by": "מתן חכים",
+      "supplied_on": "2026-08-03",
+      "source_note": "שמות ועובדת העמדה הבריטית מתוך עמוד ענן, נמסרו ידנית. תורמי התוכן שם: שמעון כהן ואחרים. עדכון אחרון במקור: 5.12.2023.",
+      "url": "https://amudanan.co.il/"
+    }
+  ]
+}

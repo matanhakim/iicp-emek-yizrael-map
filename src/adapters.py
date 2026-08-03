@@ -1314,6 +1314,57 @@ def build_conservation_overlay(jur=None) -> dict:
 
 
 # --------------------------------------------------------------------------------------
+# 9. Hand-curated additions
+# --------------------------------------------------------------------------------------
+def adapt_manual_curated(jur=None) -> list[dict]:
+    """Additions and corrections a person supplied, from data/manual/additions.json.
+
+    Unlike every other source this one cannot be re-derived by running the pipeline, so it lives
+    in the repository under version control and each entry carries who supplied it, from where
+    and when. An entry whose name and position match an existing site merges into it and
+    contributes its names, periods and statuses; an entry that matches nothing becomes a new
+    site. Both behaviours fall out of the ordinary matcher, so nothing here bypasses it.
+    """
+    p = ROOT / "data" / "manual" / "additions.json"
+    if not p.exists():
+        return []
+    doc = json.loads(p.read_text(encoding="utf-8"))
+    out = []
+    for e in doc.get("entries", []):
+        lat, lon = e.get("lat"), e.get("lon")
+        if lat is not None and not _in_scope(jur, lat, lon):
+            print(f"  manual_curated: {e.get('name')!r} is outside the council and was skipped")
+            continue
+        if not e.get("name"):
+            continue
+        periods = [x for x in (e.get("periods") or []) if x in sc.PERIOD_HE]
+        out.append(claim(
+            "manual_curated", e.get("record_id"),
+            url=e.get("url"),
+            name=e["name"], names_alt=e.get("names_alt") or [],
+            name_en=e.get("name_en"),
+            description=e.get("description"),
+            category_hint=e.get("category_hint"),
+            type=e["type"] if e.get("type") in sc.SITE_TYPES else vm.site_type(e["name"]),
+            periods=periods,
+            year_from=e.get("year_from"), year_to=e.get("year_to"),
+            date_text=e.get("date_text"),
+            lat=lat, lon=lon,
+            location_precision=e.get("location_precision") or "unknown",
+            locality=e.get("locality"),
+            statuses=e.get("statuses") or {},
+            practical=e.get("practical") or {},
+            ids=e.get("ids") or {},
+            extra={**(e.get("extra") or {}),
+                   "supplied_by": e.get("supplied_by"),
+                   "supplied_on": e.get("supplied_on"),
+                   "source_note": e.get("source_note")},
+            raw={k: v for k, v in e.items() if k not in ("extra", "statuses", "practical")},
+        ))
+    return out
+
+
+# --------------------------------------------------------------------------------------
 # registry and entry point
 # --------------------------------------------------------------------------------------
 ADAPTERS = {
@@ -1321,13 +1372,14 @@ ADAPTERS = {
     "iaa_discover": adapt_iaa_discover,
     "iaa_cluster_table": adapt_iaa_cluster_table,
     "heritage_official": adapt_heritage_official,
+    "manual_curated": adapt_manual_curated,
     "blue_signs": adapt_blue_signs,
     "culture_institutions": adapt_culture_institutions,
     "iicp_culture_table": adapt_iicp_culture_table,
     "osm_wikidata": adapt_osm_wikidata,
 }
 NEEDS_JUR = {"declared_antiquities", "iaa_discover", "blue_signs", "osm_wikidata",
-             "heritage_official", "culture_institutions"}
+             "heritage_official", "culture_institutions", "manual_curated"}
 
 
 def run_all(only: list[str] | None = None) -> dict:

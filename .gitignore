@@ -4,6 +4,8 @@
 data/raw/
 data/interim/
 data/verify/
+# data/manual/ IS committed: it is curated input that cannot be regenerated from code.
+!data/manual/
 
 # site/vendor/ and site/fonts/ ARE committed on purpose. The published page must make zero
 # third-party requests apart from map tiles, so MapLibre and the two typefaces are served from

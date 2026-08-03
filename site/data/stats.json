@@ -1,25 +1,25 @@
 {
- "claim_records": 1931,
+ "claim_records": 1933,
  "locality_head_tokens": 84,
  "settlements_loaded": 38,
  "statutory_overlay_applied": {
-  "reg_conservation": 405,
-  "protected_area": 123
+  "reg_conservation": 406,
+  "protected_area": 124
  },
  "colocated_links": 164,
- "sites": 1037,
+ "sites": 1038,
  "merged_sites": 668,
  "by_category": {
   "archaeological": 723,
-  "historic": 200,
+  "historic": 201,
   "culture": 114
  },
- "in_council": 751,
+ "in_council": 752,
  "outside_council": 241,
  "no_coordinate": 45,
  "needs_review": 595,
- "review_queue_total": 1768,
- "review_queue_surfaced": 822,
+ "review_queue_total": 1781,
+ "review_queue_surfaced": 823,
  "blocked_pairs": 752,
  "mean_confidence": 0.881,
  "confidence_at_least_95": 400,
