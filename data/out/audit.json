@@ -1,19 +1,19 @@
 {
- "sites": 1045,
+ "sites": 1052,
  "names": {
   "latin_only": 22,
   "repeated_word": 3
  },
  "duplicates": {
-  "candidate_pairs_examined": 5862,
-  "suspicious": 537,
-  "actionable": 55,
+  "candidate_pairs_examined": 5889,
+  "suspicious": 544,
+  "actionable": 58,
   "surfaced": 30,
   "note": "actionable = same place likely, different sources, within 250 m"
  },
  "provenance": {},
  "geometry": {
-  "no_coordinate": 112
+  "no_coordinate": 117
  },
  "classification": {},
  "findings_by_severity": {
@@ -575,7 +575,7 @@
    "site_id": null,
    "site_name": null,
    "detail": {
-    "a": "ey-arch-1b1bb7-2",
+    "a": "ey-arch-1b1bb7-3",
     "a_name": "באר־טבעון",
     "b": "ey-hist-1b1bb7",
     "b_name": "באר טבעון",
@@ -679,6 +679,24 @@
   {
    "severity": "medium",
    "kind": "possible_duplicate",
+   "message": "ייתכן שאותו מקום מופיע פעמיים: 'תל חנתון' ו-'תל חנתון' במרחק 92.2 מטר, דמיון שם 1.0",
+   "site_id": null,
+   "site_name": null,
+   "detail": {
+    "a": "ey-arch-d22f5e-2",
+    "a_name": "תל חנתון",
+    "b": "ey-arch-d22f5e-3",
+    "b_name": "תל חנתון",
+    "distance_m": 92.2,
+    "name_similarity": 1.0,
+    "same_source_only": false,
+    "a_iaa": "2992",
+    "b_iaa": "3140"
+   }
+  },
+  {
+   "severity": "medium",
+   "kind": "possible_duplicate",
    "message": "ייתכן שאותו מקום מופיע פעמיים: 'מרחביה' ו-'בית האומנים והאומניות בקיבוץ מרחביה' במרחק 104.5 מטר, דמיון שם 1.0",
    "site_id": null,
    "site_name": null,
@@ -741,24 +759,6 @@
     "a_name": "מזרע",
     "b": "ey-cult-f143a7",
     "b_name": "הספרייה האזורית עמק יזרעאל - סניף מזרע",
-    "distance_m": 133.9,
-    "name_similarity": 1.0,
-    "same_source_only": false,
-    "a_iaa": null,
-    "b_iaa": null
-   }
-  },
-  {
-   "severity": "medium",
-   "kind": "possible_duplicate",
-   "message": "ייתכן שאותו מקום מופיע פעמיים: 'מזרע' ו-'אולם תרבות מזרע' במרחק 133.9 מטר, דמיון שם 1.0",
-   "site_id": null,
-   "site_name": null,
-   "detail": {
-    "a": "ey-hist-050112",
-    "a_name": "מזרע",
-    "b": "ey-cult-d2f794",
-    "b_name": "אולם תרבות מזרע",
     "distance_m": 133.9,
     "name_similarity": 1.0,
     "same_source_only": false,

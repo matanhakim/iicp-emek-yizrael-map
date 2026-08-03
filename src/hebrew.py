@@ -165,6 +165,40 @@ def distinctive(s: str | None) -> list[str]:
 
 _NO_SHARED_SPECIFIER_CAP = 0.45
 
+# Institution names that recur once per settlement. Every moshav in the valley has a בית העם;
+# most have a ספרייה and a מגדל מים. A name built only from these plus generic heads identifies
+# a KIND of building, not a particular one, so two such names matching tells us nothing about
+# whether they are the same place.
+_GENERIC_INSTITUTION_WORDS = {
+    "העמ", "עמ", "ספריה", "ספרייה", "מוזיאונ", "ארכיונ", "מרכז", "תרבות", "קהילתי",
+    "מגדל", "מימ", "בארות", "מקווה", "צרכניה", "מכולת", "מרפאה", "גנ", "ילדימ",
+    "קברות", "עלמינ", "כנסת", "מסגד", "כנסיה", "אנדרטה", "אנדרטת", "מצפור",
+    "אולמ", "מופעימ", "היכל", "גלריה", "סטודיו", "בריכה", "מתנס", "ישנ", "ישנה",
+    "הראשונימ", "ראשונימ", "מבקרימ", "אמנות", "אומנות",
+}
+
+
+def is_generic_name(s: str | None) -> bool:
+    """True when a name identifies a kind of place rather than a particular one.
+
+    'בית העם' and 'ספרייה' are generic; 'בית העם אלוני אבא' and 'מוזיאון חנקין' are not.
+    Callers must refuse to merge two generic names on the strength of the name alone.
+    """
+    toks = [t for t in key(s).split() if t]
+    if not toks:
+        return True
+
+    def is_generic_token(t: str) -> bool:
+        # The definite article rides on the word in Hebrew, so 'המימ' and 'הישנ' have to be
+        # tested with it stripped or 'מגדל המים' looks like a specific name.
+        for form in {t, t[1:]} if t.startswith("ה") and len(t) > 2 else {t}:
+            if form in _GENERIC_HEADS or form in LOCALITY_HEADS \
+                    or form in _GENERIC_INSTITUTION_WORDS:
+                return True
+        return False
+
+    return not [t for t in toks if not is_generic_token(t)]
+
 
 def similarity(a: str | None, b: str | None) -> float:
     """0..1 name similarity, gated so a shared generic head cannot carry a match on its own."""

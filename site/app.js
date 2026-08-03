@@ -158,8 +158,13 @@ async function boot() {
 function placeOf(s) { return s.locality || s.nearest_settlement || '—'; }
 function placeIsDerived(s) { return !s.locality && !!s.nearest_settlement; }
 
+// A generic name gets its settlement appended for display, because five rows reading 'בית העם'
+// are five different buildings. `s.name` keeps what the sources said; this is the label.
+function labelOf(s) { return s.display_name || s.name || 'ללא שם'; }
+
 function textOf(s) {
-  return [s.name, s.name_en, s.locality, S.vocab.site_types[s.type]?.he,
+  return [s.name, s.display_name, s.name_en, s.locality, s.nearest_settlement,
+    S.vocab.site_types[s.type]?.he,
     ...(s.rest?.names_alt || []).map(a => a.name), s.rest?.address, s.rest?.operator]
     .filter(Boolean).join(' ').toLowerCase();
 }
@@ -585,7 +590,7 @@ function fc(sites) {
     features: sites.filter(s => s.lat !== null && s.lat !== undefined).map(s => ({
       type: 'Feature', id: undefined,
       properties: {
-        id: s.id, name: s.name || 'ללא שם', category: s.category,
+        id: s.id, name: labelOf(s), category: s.category,
         approx: APPROX_PRECISION.has(s.location_precision),
         sub: [S.vocab.categories[s.category]?.he, placeOf(s) === '—' ? null : placeOf(s),
           S.vocab.site_types[s.type]?.he,
@@ -621,7 +626,7 @@ async function select(id) {
   S.selected = id;
   renderMap();
   const d = $('#detail');
-  $('#dName').textContent = s.name || 'ללא שם';
+  $('#dName').textContent = labelOf(s);
   $('#dGlyph').replaceWith(Object.assign(glyph(s.category, 15), { id: 'dGlyph' }));
   $('#dMeta').textContent = [S.vocab.categories[s.category]?.he, s.locality,
     S.vocab.site_types[s.type]?.he].filter(Boolean).join(' · ');
@@ -834,7 +839,7 @@ function detailSections(s) {
 
 /* ------------------------------------------------------------- table view */
 const TABLE_COLS = [
-  ['name', 'שם', s => s.name || '—'],
+  ['name', 'שם', s => labelOf(s)],
   ['category', 'קטגוריה', s => S.vocab.categories[s.category]?.he || ''],
   ['type', 'סוג', s => S.vocab.site_types[s.type]?.he || ''],
   ['locality', 'יישוב', s => placeOf(s) === '—' ? '' : placeOf(s) + (placeIsDerived(s) ? ' (הקרוב)' : '')],

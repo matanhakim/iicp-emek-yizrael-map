@@ -3,25 +3,25 @@
  "locality_head_tokens": 84,
  "settlements_loaded": 38,
  "statutory_overlay_applied": {
-  "reg_conservation": 390,
-  "protected_area": 119
+  "reg_conservation": 396,
+  "protected_area": 120
  },
- "colocated_links": 156,
- "sites": 1045,
- "merged_sites": 660,
+ "colocated_links": 158,
+ "sites": 1052,
+ "merged_sites": 662,
  "by_category": {
-  "archaeological": 726,
-  "historic": 203,
+  "archaeological": 730,
+  "historic": 206,
   "culture": 116
  },
- "in_council": 692,
+ "in_council": 694,
  "outside_council": 241,
- "no_coordinate": 112,
- "needs_review": 649,
- "review_queue_total": 1704,
- "review_queue_surfaced": 783,
+ "no_coordinate": 117,
+ "needs_review": 654,
+ "review_queue_total": 1716,
+ "review_queue_surfaced": 795,
  "blocked_pairs": 752,
- "mean_confidence": 0.863,
+ "mean_confidence": 0.861,
  "confidence_at_least_95": 400,
- "mean_status_completeness": 0.239
+ "mean_status_completeness": 0.238
 }

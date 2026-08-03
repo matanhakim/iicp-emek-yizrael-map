@@ -19,6 +19,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+import hebrew as he  # noqa: E402
 import schema as sc  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -91,6 +92,10 @@ def vocab() -> dict:
 def run() -> dict:
     sites = json.loads((OUT / "sites.json").read_text(encoding="utf-8"))
     SITE_DATA.mkdir(parents=True, exist_ok=True)
+    # Settlement names must be registered before is_generic_name can recognise one.
+    he.add_locality_heads(
+        [s.get("locality") for s in sites if s.get("locality")]
+        + [s.get("nearest_settlement") for s in sites if s.get("nearest_settlement")])
 
     slim, claims, detail = [], {}, {}
     dropped_far, redacted = 0, 0
@@ -101,6 +106,18 @@ def run() -> dict:
             continue
 
         rec = {k: s.get(k) for k in CORE}
+
+        # A generic name is not usable on its own in a list: the valley has a בית העם in every
+        # moshav, and five rows reading 'בית העם' are indistinguishable even though they are five
+        # different buildings. The settlement is appended for display only; `name` keeps what the
+        # sources actually said.
+        place = s.get("locality") or s.get("nearest_settlement")
+        if s.get("name") and place and he.is_generic_name(s["name"]) \
+                and he.key(place) not in he.key(s["name"]):
+            rec["display_name"] = f"{s['name']}, {place}"
+            rec["display_name_is_qualified"] = True
+        else:
+            rec["display_name"] = s.get("name")
         rec["rest"] = {k: s.get(k) for k in REST if s.get(k) not in (None, [], {}, "")}
 
         private = any((e or {}).get("contact_is_private_sector")

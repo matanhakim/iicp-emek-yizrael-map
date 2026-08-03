@@ -198,11 +198,20 @@ def pair_score(a: dict, b: dict) -> tuple[float, dict]:
         loc_sim = he.similarity(a.get("locality"), b.get("locality")) if both else None
         loc_ok = bool(both and loc_sim >= 0.85)
         loc_conflict = bool(both and loc_sim < 0.60)
+        generic = he.is_generic_name(a.get("name")) or he.is_generic_name(b.get("name"))
         why["mode"] = "name_only"
         why["locality_agrees"] = loc_ok
         why["locality_unknown"] = not both
+        why["generic_name"] = generic
         if loc_conflict or cross_cat:
             return min(ns, 0.59 if loc_conflict else 0.79), why
+
+        # A generic name with no geometry may only merge when the locality POSITIVELY agrees.
+        # Without this, 'בית העם' in Tel Adashim merged with 'בית העם' in Alonei Abba because
+        # one side happened to carry no locality at all, and the valley has one in every moshav.
+        if generic and not loc_ok:
+            return min(ns, 0.79), why
+
         bar = NAME_ONLY_MERGE_AT if loc_ok else NAME_ONLY_NO_LOCALITY_AT
         if ns >= bar:
             why["merged_on_name_alone"] = True
@@ -650,6 +659,31 @@ def merge_cluster(members: list[dict], jur: geo.Jurisdiction | None) -> dict:
         rec["nearest_settlement"] = nm
         rec["nearest_settlement_km"] = km
         rec["nearest_settlement_code"] = code
+
+        # The coordinate is evidence about which settlement the place is in, and it outranks a
+        # sourced locality that contradicts it. A blue sign for the Alonei Abba community hall
+        # was catalogued under תל עדשים because the sign text mentions where the building STONES
+        # came from; the position says otherwise and the position is right.
+        if nm and km is not None and km <= 2.0 and rec.get("locality") \
+                and he.similarity(rec["locality"], nm) < 0.60:
+            agreeing = [c for c in all_claims
+                        if c["field"] == "locality" and isinstance(c.get("value"), str)
+                        and he.similarity(c["value"], nm) >= 0.85]
+            if agreeing:
+                was = rec["locality"]
+                rec["locality"] = agreeing[0]["value"]
+                provenance["locality"] = [c["source_id"] for c in agreeing]
+                for c in all_claims:
+                    if c["field"] == "locality":
+                        c["used"] = c in agreeing
+                conflicts.append({
+                    "field": "locality",
+                    "chosen": rec["locality"],
+                    "chosen_by": [c["source_id"] for c in agreeing],
+                    "rejected": [{"value": was, "source_id": "(precedence winner)"}],
+                    "rule": (f"היישוב שנבחר לפי הקדימות ({was}) סותר את המיקום, שנמצא "
+                             f"{km} ק\"מ מ{nm}; נבחרה טענה שמתאימה למיקום"),
+                })
     else:
         rec["nearest_settlement"] = rec["nearest_settlement_km"] = rec["nearest_settlement_code"] = None
 
