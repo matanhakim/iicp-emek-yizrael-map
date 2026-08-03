@@ -1,0 +1,55 @@
+name: Deploy map to GitHub Pages
+
+# Pages can only serve a repository root or /docs, and this repo keeps its documentation in
+# docs/ and the published page in site/, so the artifact is uploaded explicitly instead.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the payload the page needs is present
+        run: |
+          set -e
+          for f in site/index.html site/app.js site/app.css \
+                   site/data/sites.json site/data/boundary.geojson \
+                   site/vendor/maplibre-gl.js site/fonts/Assistant-hebrew.woff2; do
+            test -s "$f" || { echo "missing or empty: $f"; exit 1; }
+          done
+          python3 -c "
+          import json
+          d = json.load(open('site/data/sites.json', encoding='utf-8'))
+          n = len(d['sites'])
+          assert n > 500, f'only {n} sites in the payload'
+          assert d['vocab']['antiquity_cutoff'] == 1700
+          outside = [s for s in d['sites'] if s['in_council'] is False and (s['dist_to_boundary_m'] or 0) < -300]
+          assert not outside, f'{len(outside)} sites far outside the council reached the payload'
+          print(f'{n} sites, vocabulary present, no far-outside sites')
+          "
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
