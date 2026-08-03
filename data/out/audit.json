@@ -1,19 +1,19 @@
 {
- "sites": 1052,
+ "sites": 1037,
  "names": {
   "latin_only": 22,
   "repeated_word": 3
  },
  "duplicates": {
-  "candidate_pairs_examined": 5889,
-  "suspicious": 544,
-  "actionable": 58,
+  "candidate_pairs_examined": 6805,
+  "suspicious": 562,
+  "actionable": 62,
   "surfaced": 30,
   "note": "actionable = same place likely, different sources, within 250 m"
  },
  "provenance": {},
  "geometry": {
-  "no_coordinate": 117
+  "no_coordinate": 45
  },
  "classification": {},
  "findings_by_severity": {
@@ -64,6 +64,14 @@
    "message": "שם לטיני בשדה השם העברי: 'Forest- Original Art Place'",
    "site_id": "ey-cult-2eeae0",
    "site_name": "Forest- Original Art Place",
+   "detail": null
+  },
+  {
+   "severity": "medium",
+   "kind": "name_latin_only",
+   "message": "שם לטיני בשדה השם העברי: 'MANDALALA'",
+   "site_id": "ey-cult-579c4a",
+   "site_name": "MANDALALA",
    "detail": null
   },
   {
@@ -220,11 +228,21 @@
   },
   {
    "severity": "medium",
-   "kind": "name_latin_only",
-   "message": "שם לטיני בשדה השם העברי: 'MANDALALA'",
-   "site_id": "ey-cult-579c4a",
-   "site_name": "MANDALALA",
-   "detail": null
+   "kind": "possible_duplicate",
+   "message": "ייתכן שאותו מקום מופיע פעמיים: 'מגדל המים' ו-'מגדל המים' במרחק 9.2 מטר, דמיון שם 1.0",
+   "site_id": null,
+   "site_name": null,
+   "detail": {
+    "a": "ey-hist-a2eacb-6",
+    "a_name": "מגדל המים",
+    "b": "ey-hist-a2eacb-5",
+    "b_name": "מגדל המים",
+    "distance_m": 9.2,
+    "name_similarity": 1.0,
+    "same_source_only": false,
+    "a_iaa": null,
+    "b_iaa": null
+   }
   },
   {
    "severity": "medium",
@@ -571,11 +589,29 @@
   {
    "severity": "medium",
    "kind": "possible_duplicate",
+   "message": "ייתכן שאותו מקום מופיע פעמיים: 'מחנה ישראל (דברת)' ו-'מצודת מחנה ישראל' במרחק 15.7 מטר, דמיון שם 1.0",
+   "site_id": null,
+   "site_name": null,
+   "detail": {
+    "a": "ey-arch-48ad49",
+    "a_name": "מחנה ישראל (דברת)",
+    "b": "ey-hist-6de245",
+    "b_name": "מצודת מחנה ישראל",
+    "distance_m": 15.7,
+    "name_similarity": 1.0,
+    "same_source_only": false,
+    "a_iaa": null,
+    "b_iaa": null
+   }
+  },
+  {
+   "severity": "medium",
+   "kind": "possible_duplicate",
    "message": "ייתכן שאותו מקום מופיע פעמיים: 'באר־טבעון' ו-'באר טבעון' במרחק 17.4 מטר, דמיון שם 1.0",
    "site_id": null,
    "site_name": null,
    "detail": {
-    "a": "ey-arch-1b1bb7-3",
+    "a": "ey-arch-1b1bb7-2",
     "a_name": "באר־טבעון",
     "b": "ey-hist-1b1bb7",
     "b_name": "באר טבעון",
@@ -616,6 +652,24 @@
     "b": "ey-cult-1c68e1",
     "b_name": "תצוגת הקבע בבית העם נהלל",
     "distance_m": 22.4,
+    "name_similarity": 1.0,
+    "same_source_only": false,
+    "a_iaa": null,
+    "b_iaa": null
+   }
+  },
+  {
+   "severity": "medium",
+   "kind": "possible_duplicate",
+   "message": "ייתכן שאותו מקום מופיע פעמיים: 'ציפורי' ו-'גן לאומי ציפורי' במרחק 42.3 מטר, דמיון שם 1.0",
+   "site_id": null,
+   "site_name": null,
+   "detail": {
+    "a": "ey-arch-842aa8-4",
+    "a_name": "ציפורי",
+    "b": "ey-arch-777155",
+    "b_name": "גן לאומי ציפורי",
+    "distance_m": 42.3,
     "name_similarity": 1.0,
     "same_source_only": false,
     "a_iaa": null,
@@ -679,19 +733,19 @@
   {
    "severity": "medium",
    "kind": "possible_duplicate",
-   "message": "ייתכן שאותו מקום מופיע פעמיים: 'תל חנתון' ו-'תל חנתון' במרחק 92.2 מטר, דמיון שם 1.0",
+   "message": "ייתכן שאותו מקום מופיע פעמיים: 'ציפורי' ו-'גן לאומי ציפורי' במרחק 91.9 מטר, דמיון שם 1.0",
    "site_id": null,
    "site_name": null,
    "detail": {
-    "a": "ey-arch-d22f5e-2",
-    "a_name": "תל חנתון",
-    "b": "ey-arch-d22f5e-3",
-    "b_name": "תל חנתון",
-    "distance_m": 92.2,
+    "a": "ey-arch-842aa8-3",
+    "a_name": "ציפורי",
+    "b": "ey-arch-777155",
+    "b_name": "גן לאומי ציפורי",
+    "distance_m": 91.9,
     "name_similarity": 1.0,
     "same_source_only": false,
-    "a_iaa": "2992",
-    "b_iaa": "3140"
+    "a_iaa": null,
+    "b_iaa": null
    }
   },
   {
@@ -709,60 +763,6 @@
     "name_similarity": 1.0,
     "same_source_only": false,
     "a_iaa": "3121",
-    "b_iaa": null
-   }
-  },
-  {
-   "severity": "medium",
-   "kind": "possible_duplicate",
-   "message": "ייתכן שאותו מקום מופיע פעמיים: 'מרחביה' ו-'חדר האוכל השני בקיבוץ מרחביה' במרחק 104.5 מטר, דמיון שם 1.0",
-   "site_id": null,
-   "site_name": null,
-   "detail": {
-    "a": "ey-arch-bd42f6-3",
-    "a_name": "מרחביה",
-    "b": "ey-cult-6ee5fd",
-    "b_name": "חדר האוכל השני בקיבוץ מרחביה",
-    "distance_m": 104.5,
-    "name_similarity": 1.0,
-    "same_source_only": false,
-    "a_iaa": "3121",
-    "b_iaa": null
-   }
-  },
-  {
-   "severity": "medium",
-   "kind": "possible_duplicate",
-   "message": "ייתכן שאותו מקום מופיע פעמיים: 'ציפורי 4' ו-'ציפורי' במרחק 123.2 מטר, דמיון שם 1.0",
-   "site_id": null,
-   "site_name": null,
-   "detail": {
-    "a": "ey-arch-beea3b",
-    "a_name": "ציפורי 4",
-    "b": "ey-arch-842aa8-3",
-    "b_name": "ציפורי",
-    "distance_m": 123.2,
-    "name_similarity": 1.0,
-    "same_source_only": false,
-    "a_iaa": null,
-    "b_iaa": null
-   }
-  },
-  {
-   "severity": "medium",
-   "kind": "possible_duplicate",
-   "message": "ייתכן שאותו מקום מופיע פעמיים: 'מזרע' ו-'הספרייה האזורית עמק יזרעאל - סניף מזרע' במרחק 133.9 מטר, דמיון שם 1.0",
-   "site_id": null,
-   "site_name": null,
-   "detail": {
-    "a": "ey-hist-050112",
-    "a_name": "מזרע",
-    "b": "ey-cult-f143a7",
-    "b_name": "הספרייה האזורית עמק יזרעאל - סניף מזרע",
-    "distance_m": 133.9,
-    "name_similarity": 1.0,
-    "same_source_only": false,
-    "a_iaa": null,
     "b_iaa": null
    }
   }

@@ -1,13 +1,13 @@
 {
  "surfaced_threshold": 0.7,
  "totals": {
-  "all_review_items": 1716,
-  "surfaced": 795,
-  "suppressed_low_score_borderline": 921,
+  "all_review_items": 1768,
+  "surfaced": 822,
+  "suppressed_low_score_borderline": 946,
   "blocked_by_conflicting_id": 752,
   "by_kind": {
-   "blocked_by_same_source_constraint": 248,
-   "borderline_match": 1321,
+   "blocked_by_same_source_constraint": 254,
+   "borderline_match": 1367,
    "possible_duplicate_within_source": 147
   }
  },
@@ -8909,6 +8909,72 @@
   },
   {
    "a": {
+    "source_id": "iaa_discover",
+    "record_id": "declared_site:29359",
+    "name": "באר טבעון",
+    "lat": 32.7140112,
+    "lon": 35.1409108,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://discover.iaa.org.il/?entityId=29359&entityType=hachraza"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r411",
+    "name": "באר טבעון",
+    "lat": 32.7133125,
+    "lon": 35.1419375,
+    "locality": "אלונים",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.8765,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 123.5,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.6911
+   },
+   "kind": "blocked_by_same_source_constraint",
+   "reason": "would put two declared_antiquities rows in one site: 'באר טבעון' and 'באר־טבעון'"
+  },
+  {
+   "a": {
+    "source_id": "declared_antiquities",
+    "record_id": "poly:7246",
+    "name": "באר טבעון",
+    "lat": 32.7140086,
+    "lon": 35.1409075,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r411",
+    "name": "באר טבעון",
+    "lat": 32.7133125,
+    "lon": 35.1419375,
+    "locality": "אלונים",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.8764,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 123.6,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.691
+   },
+   "kind": "blocked_by_same_source_constraint",
+   "reason": "would put two declared_antiquities rows in one site: 'באר טבעון' and 'באר־טבעון'"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "survey:95824e41-3e99-4386-b9a4-d4a49bf2d25d",
     "name": "עֵין יִבְקַע",
@@ -11352,6 +11418,42 @@
   {
    "a": {
     "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0241",
+    "name": "אתר מגדל המים",
+    "lat": null,
+    "lon": null,
+    "locality": "כפר יהושע",
+    "category_hint": "historic",
+    "url": "https://he.wikipedia.org/wiki/פורטל:אתרי_מורשת_בישראל/שלטים_כחולים"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r530",
+    "name": "מגדל המים",
+    "lat": 32.6805375,
+    "lon": 35.1512031,
+    "locality": "כפר יהושע",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.84,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": null,
+    "gate_m": 300.0,
+    "cross_category_types": false,
+    "mode": "name_only",
+    "locality_agrees": true,
+    "locality_unknown": false,
+    "generic_name": true,
+    "merged_on_name_alone": true
+   },
+   "kind": "blocked_by_same_source_constraint",
+   "reason": "would put two blue_signs rows in one site: 'אתר מגדל המים' and 'מגדל המים (הבריכה)'"
+  },
+  {
+   "a": {
+    "source_id": "blue_signs",
     "record_id": "blue_signs_wp_0243",
     "name": "תל שמאם כפר יהושע",
     "lat": null,
@@ -11379,6 +11481,42 @@
     "mode": "name_only",
     "locality_agrees": false,
     "locality_unknown": true,
+    "generic_name": false,
+    "merged_on_name_alone": true
+   },
+   "kind": "blocked_by_same_source_constraint",
+   "reason": "would put two declared_antiquities rows in one site: 'תל שם' and 'תל שם'"
+  },
+  {
+   "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0243",
+    "name": "תל שמאם כפר יהושע",
+    "lat": null,
+    "lon": null,
+    "locality": "כפר יהושע",
+    "category_hint": "historic",
+    "url": "https://shimur.org/signs/תל-שמאם/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r532",
+    "name": "תל שמאם",
+    "lat": 32.6700625,
+    "lon": 35.1560625,
+    "locality": "כפר יהושע",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.84,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": null,
+    "gate_m": 350.0,
+    "cross_category_types": false,
+    "mode": "name_only",
+    "locality_agrees": true,
+    "locality_unknown": false,
     "generic_name": false,
     "merged_on_name_alone": true
    },
@@ -11568,42 +11706,6 @@
   {
    "a": {
     "source_id": "declared_antiquities",
-    "record_id": "survey:71564e58-5d97-43a3-a62d-2709d04939da",
-    "name": "תל שם",
-    "lat": 32.6698037,
-    "lon": 35.1556609,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "b": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r532",
-    "name": "תל שמאם",
-    "lat": null,
-    "lon": null,
-    "locality": "כפר יהושע",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "score": 0.84,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": false,
-    "merged_on_name_alone": true
-   },
-   "kind": "blocked_by_same_source_constraint",
-   "reason": "would put two declared_antiquities rows in one site: 'תל שם' and 'תל שם'"
-  },
-  {
-   "a": {
-    "source_id": "declared_antiquities",
     "record_id": "survey:399544ca-272d-4505-ac30-d4b43a2e8b94",
     "name": "ח' סהר",
     "lat": 32.6174141,
@@ -11672,6 +11774,42 @@
    },
    "kind": "blocked_by_same_source_constraint",
    "reason": "would put two declared_antiquities rows in one site: 'עין עמיאל' and 'עין־עמיאל'"
+  },
+  {
+   "a": {
+    "source_id": "iaa_cluster_table",
+    "record_id": "iaa_cluster_r25",
+    "name": "תל שם",
+    "lat": null,
+    "lon": null,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r532",
+    "name": "תל שמאם",
+    "lat": 32.6700625,
+    "lon": 35.1560625,
+    "locality": "כפר יהושע",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.84,
+   "why": {
+    "name_score": 0.9883,
+    "distance_m": null,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "name_only",
+    "locality_agrees": false,
+    "locality_unknown": true,
+    "generic_name": false,
+    "merged_on_name_alone": true
+   },
+   "kind": "blocked_by_same_source_constraint",
+   "reason": "would put two declared_antiquities rows in one site: 'תל שם' and 'תל שם'"
   },
   {
    "a": {
@@ -11816,78 +11954,6 @@
    },
    "kind": "blocked_by_same_source_constraint",
    "reason": "would put two declared_antiquities rows in one site: \"סהר, ח' (מערב)\" and \"ח' סהר\""
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r532",
-    "name": "תל שמאם",
-    "lat": null,
-    "lon": null,
-    "locality": "כפר יהושע",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "osm:node/278477465",
-    "name": "תל שם",
-    "lat": 32.669896,
-    "lon": 35.1557587,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": "https://www.openstreetmap.org/node/278477465"
-   },
-   "score": 0.84,
-   "why": {
-    "name_score": 0.9883,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": false,
-    "merged_on_name_alone": true
-   },
-   "kind": "blocked_by_same_source_constraint",
-   "reason": "would put two declared_antiquities rows in one site: 'תל שם' and 'תל שם'"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r628",
-    "name": "תל שימרון",
-    "lat": null,
-    "lon": null,
-    "locality": "תמרת",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "osm:way/325413034",
-    "name": "שמורת טבע שימרון",
-    "lat": 32.701352299999996,
-    "lon": 35.21397703804814,
-    "locality": null,
-    "category_hint": "historic",
-    "url": "https://www.openstreetmap.org/way/325413034"
-   },
-   "score": 0.84,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 350.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": false,
-    "merged_on_name_alone": true
-   },
-   "kind": "blocked_by_same_source_constraint",
-   "reason": "would put two declared_antiquities rows in one site: 'תל שמרון 2' and 'תל שמרון 4'"
   },
   {
    "a": {
@@ -12452,6 +12518,39 @@
   },
   {
    "a": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r404",
+    "name": "תל יפתחאל",
+    "lat": 32.7551875,
+    "lon": 35.2278125,
+    "locality": "אלון הגליל",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "osm_wikidata",
+    "record_id": "osm:relation/7826270",
+    "name": "שמורת טבע נחל יפתחאל",
+    "lat": 32.755081450000006,
+    "lon": 35.22623186684724,
+    "locality": null,
+    "category_hint": null,
+    "url": "https://www.openstreetmap.org/relation/7826270"
+   },
+   "score": 0.8328,
+   "why": {
+    "name_score": 0.9684,
+    "distance_m": 148.3,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.6293
+   },
+   "kind": "blocked_by_same_source_constraint",
+   "reason": "would put two osm_wikidata rows in one site: 'יפתחאל' and 'שמורת טבע נחל יפתחאל'"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "survey:2ff1e2cc-5929-4483-9b8d-7bf60f5b3a44",
     "name": "מעלול צפון",
@@ -12782,6 +12881,72 @@
   },
   {
    "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0049",
+    "name": "בית המדגרות ומחסן התבואות",
+    "lat": 32.679167,
+    "lon": 35.204722,
+    "locality": "רמת דוד",
+    "category_hint": "historic",
+    "url": "https://he.wikipedia.org/wiki/פורטל:אתרי_מורשת_בישראל/שלטים_כחולים"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r583",
+    "name": "הרפתות ומחסן התבואות",
+    "lat": 32.6787625,
+    "lon": 35.2043281,
+    "locality": "רמת דוד",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.8257,
+   "why": {
+    "name_score": 0.8388,
+    "distance_m": 58.2,
+    "gate_m": 300.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.8061
+   },
+   "kind": "blocked_by_same_source_constraint",
+   "reason": "would put two blue_signs rows in one site: 'בית המדגרות ומחסן התבואות' and 'הרפתות ומחסן התבואות במרכז'"
+  },
+  {
+   "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0020",
+    "name": "מועדון חברת הילדים 1938",
+    "lat": 32.664722,
+    "lon": 35.2575,
+    "locality": "גניגר",
+    "category_hint": "historic",
+    "url": "https://shimur.org/signs/מועדון-חברת-הילדים-1938/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r450",
+    "name": "מועדון",
+    "lat": 32.6638125,
+    "lon": 35.2570625,
+    "locality": "גניגר",
+    "category_hint": "culture",
+    "url": null
+   },
+   "score": 0.8254,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 109.1,
+    "gate_m": 250.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.5636
+   },
+   "kind": "blocked_by_same_source_constraint",
+   "reason": "would put two iicp_culture_table rows in one site: 'מועדון חברת הילדים- 1938' and 'מועדון'"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "poly:36373",
     "name": "חורבת עפרת",
@@ -12878,6 +13043,39 @@
    },
    "kind": "blocked_by_same_source_constraint",
    "reason": "would put two declared_antiquities rows in one site: \"ח' עָפְרַת (דרום-מזרח)\" and 'חורבת עפרת'"
+  },
+  {
+   "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0050",
+    "name": "הרפתות ומחסן התבואות במרכז",
+    "lat": 32.678611,
+    "lon": 35.204444,
+    "locality": "רמת דוד",
+    "category_hint": "historic",
+    "url": "https://he.wikipedia.org/wiki/פורטל:אתרי_מורשת_בישראל/שלטים_כחולים"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r584",
+    "name": "בית המדגרות ומחסן התבואות",
+    "lat": 32.6788875,
+    "lon": 35.2043906,
+    "locality": "רמת דוד",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.8218,
+   "why": {
+    "name_score": 0.7722,
+    "distance_m": 31.1,
+    "gate_m": 300.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.8962
+   },
+   "kind": "blocked_by_same_source_constraint",
+   "reason": "would put two blue_signs rows in one site: 'הרפתות ומחסן התבואות במרכז' and 'בית המדגרות ומחסן התבואות'"
   },
   {
    "a": {
@@ -13075,6 +13273,70 @@
   },
   {
    "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0033",
+    "name": "בית הספר",
+    "lat": 32.681389,
+    "lon": 35.151111,
+    "locality": "כפר יהושע",
+    "category_hint": "historic",
+    "url": "https://shimur.org/signs/בית-הספר-2/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r524",
+    "name": "בית הספר הישראלי לקרקס",
+    "lat": 32.6804375,
+    "lon": 35.1506875,
+    "locality": "כפר יהושע",
+    "category_hint": "culture",
+    "url": null
+   },
+   "score": 0.8192,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 113.0,
+    "gate_m": 250.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.5481
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "declared_antiquities",
+    "record_id": "poly:29138",
+    "name": "ח' יפתחאל",
+    "lat": 32.7555007,
+    "lon": 35.229448,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r404",
+    "name": "תל יפתחאל",
+    "lat": 32.7551875,
+    "lon": 35.2278125,
+    "locality": "אלון הגליל",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.8191,
+   "why": {
+    "name_score": 0.96,
+    "distance_m": 156.9,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.6079
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "iaa_discover",
     "record_id": "declared_site:26746",
     "name": "בית שערים",
@@ -13102,6 +13364,38 @@
     "cross_category_types": false,
     "mode": "blended",
     "dist_score": 0.5475
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "iaa_discover",
+    "record_id": "declared_site:29769",
+    "name": "ח' יפתחאל",
+    "lat": 32.7555033,
+    "lon": 35.2294511,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://discover.iaa.org.il/?entityId=29769&entityType=hachraza"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r404",
+    "name": "תל יפתחאל",
+    "lat": 32.7551875,
+    "lon": 35.2278125,
+    "locality": "אלון הגליל",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.8188,
+   "why": {
+    "name_score": 0.96,
+    "distance_m": 157.2,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.607
    },
    "kind": "borderline_match"
   },
@@ -13587,6 +13881,38 @@
   },
   {
    "a": {
+    "source_id": "heritage_official",
+    "record_id": "shimur_heritage_site:269",
+    "name": "החצר הגדולה במרחביה",
+    "lat": 32.6070191,
+    "lon": 35.30870900000002,
+    "locality": null,
+    "category_hint": "historic",
+    "url": "https://shimur.org/sites/החצר-הגדולה-במרחביה/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r545",
+    "name": "החצר הגדולה במרחביה",
+    "lat": 32.6059375,
+    "lon": 35.3095625,
+    "locality": "מרחביה (קיבוץ)",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.8074,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 144.4,
+    "gate_m": 300.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.5186
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "survey:4d69405e-e516-4a63-9ce1-7a7aaa75a0fd",
     "name": "תל שמרון 6",
@@ -13614,6 +13940,38 @@
     "cross_category_types": false,
     "mode": "blended",
     "dist_score": 0.5167
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "declared_antiquities",
+    "record_id": "survey:1ecb5637-44be-460b-ade9-63fda86a6815",
+    "name": "ח'רבת חאלאדיה",
+    "lat": 32.7536788,
+    "lon": 35.2281665,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r404",
+    "name": "תל יפתחאל",
+    "lat": 32.7551875,
+    "lon": 35.2278125,
+    "locality": "אלון הגליל",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.805,
+   "why": {
+    "name_score": 0.96,
+    "distance_m": 171.0,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.5725
    },
    "kind": "borderline_match"
   },
@@ -14003,6 +14361,38 @@
   },
   {
    "a": {
+    "source_id": "iaa_discover",
+    "record_id": "survey_site:22440",
+    "name": "תל שמרון",
+    "lat": 32.7023529,
+    "lon": 35.2143681,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://survey.iaa.org.il/#/MapSurvey/2154"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r628",
+    "name": "תל שימרון",
+    "lat": 32.7036875,
+    "lon": 35.2143125,
+    "locality": "תמרת",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.8008,
+   "why": {
+    "name_score": 0.9155,
+    "distance_m": 148.5,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.6288
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "survey:6baa39d3-0da4-4d5f-88d6-1a865e6d5048",
     "name": "ח' אנדור",
@@ -14190,6 +14580,38 @@
     "cross_category_types": false,
     "mode": "blended",
     "dist_score": 0.6653
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "iaa_discover",
+    "record_id": "survey_site:22438",
+    "name": "תל שמרון",
+    "lat": 32.7050581,
+    "lon": 35.2143682,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://survey.iaa.org.il/#/MapSurvey/2154"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r628",
+    "name": "תל שימרון",
+    "lat": 32.7036875,
+    "lon": 35.2143125,
+    "locality": "תמרת",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7968,
+   "why": {
+    "name_score": 0.9155,
+    "distance_m": 152.5,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.6188
    },
    "kind": "borderline_match"
   },
@@ -14516,6 +14938,38 @@
   {
    "a": {
     "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0001",
+    "name": "אלוני אבא כנסייה אוונגלית",
+    "lat": 32.729915,
+    "lon": 35.171186,
+    "locality": "אלוני אבא",
+    "category_hint": "historic",
+    "url": "https://he.wikipedia.org/wiki/הכנסייה_באלוני_אבא"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r408",
+    "name": "כנסיית ולדהיים",
+    "lat": 32.7299375,
+    "lon": 35.1711875,
+    "locality": "אלוני אבא",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.79,
+   "why": {
+    "name_score": 0.6894,
+    "distance_m": 2.5,
+    "gate_m": 300.0,
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.9916
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "blue_signs",
     "record_id": "blue_signs_wp_0013",
     "name": "צריף ראשונים",
     "lat": 32.639444,
@@ -14592,8 +15046,8 @@
     "source_id": "iicp_culture_table",
     "record_id": "iicp_culture_r556",
     "name": "הבריכה",
-    "lat": null,
-    "lon": null,
+    "lat": 32.6903625,
+    "lon": 35.1965469,
     "locality": "נהלל",
     "category_hint": "historic",
     "url": null
@@ -14601,13 +15055,11 @@
    "score": 0.79,
    "why": {
     "name_score": 1.0,
-    "distance_m": null,
+    "distance_m": 26.1,
     "gate_m": 300.0,
     "cross_category_types": true,
-    "mode": "name_only",
-    "locality_agrees": true,
-    "locality_unknown": false,
-    "generic_name": true
+    "mode": "blended",
+    "dist_score": 0.913
    },
    "kind": "borderline_match"
   },
@@ -14640,6 +15092,38 @@
     "cross_category_types": true,
     "mode": "blended",
     "dist_score": 0.7821
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0041",
+    "name": "הסליק בחצר משק אבידב בנהלל",
+    "lat": 32.69162327361074,
+    "lon": 35.193414815908504,
+    "locality": "נהלל",
+    "category_hint": "historic",
+    "url": "https://he.wikipedia.org/wiki/סליק_אבידוב_בנהלל"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r553",
+    "name": "הסליק בנהלל",
+    "lat": 32.6915625,
+    "lon": 35.1934375,
+    "locality": "נהלל",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.79,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 7.1,
+    "gate_m": 300.0,
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.9764
    },
    "kind": "borderline_match"
   },
@@ -14680,6 +15164,38 @@
   {
    "a": {
     "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0057",
+    "name": "בית הקומתיים",
+    "lat": 32.6625,
+    "lon": 35.225833,
+    "locality": "שריד",
+    "category_hint": "historic",
+    "url": "https://shimur.org/signs/בית-הקומתיים/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r594",
+    "name": "בית הקומותיים",
+    "lat": 32.6626625,
+    "lon": 35.2257969,
+    "locality": "שריד",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.79,
+   "why": {
+    "name_score": 0.9305,
+    "distance_m": 18.4,
+    "gate_m": 300.0,
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.9387
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "blue_signs",
     "record_id": "blue_signs_wp_0059",
     "name": "הבית הראשון",
     "lat": 32.663056,
@@ -14692,8 +15208,8 @@
     "source_id": "iicp_culture_table",
     "record_id": "iicp_culture_r598",
     "name": "הבית הראשון",
-    "lat": null,
-    "lon": null,
+    "lat": 32.6631625,
+    "lon": 35.2258594,
     "locality": "שריד",
     "category_hint": "historic",
     "url": null
@@ -14701,13 +15217,43 @@
    "score": 0.79,
    "why": {
     "name_score": 1.0,
-    "distance_m": null,
+    "distance_m": 12.1,
     "gate_m": 300.0,
     "cross_category_types": true,
-    "mode": "name_only",
-    "locality_agrees": true,
-    "locality_unknown": false,
-    "generic_name": false
+    "mode": "blended",
+    "dist_score": 0.9597
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0060",
+    "name": "העץ הראשון",
+    "lat": 32.663333,
+    "lon": 35.225278,
+    "locality": "שריד",
+    "category_hint": "historic",
+    "url": "https://shimur.org/signs/העץ-הראשון/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r598",
+    "name": "הבית הראשון",
+    "lat": 32.6631625,
+    "lon": 35.2258594,
+    "locality": "שריד",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.79,
+   "why": {
+    "name_score": 0.7973,
+    "distance_m": 57.6,
+    "gate_m": 300.0,
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.8079
    },
    "kind": "borderline_match"
   },
@@ -14726,8 +15272,8 @@
     "source_id": "iicp_culture_table",
     "record_id": "iicp_culture_r596",
     "name": "מגדל המים",
-    "lat": null,
-    "lon": null,
+    "lat": 32.6630375,
+    "lon": 35.2264844,
     "locality": "שריד",
     "category_hint": "historic",
     "url": null
@@ -14735,13 +15281,11 @@
    "score": 0.79,
    "why": {
     "name_score": 1.0,
-    "distance_m": null,
+    "distance_m": 9.2,
     "gate_m": 300.0,
     "cross_category_types": true,
-    "mode": "name_only",
-    "locality_agrees": true,
-    "locality_unknown": false,
-    "generic_name": true
+    "mode": "blended",
+    "dist_score": 0.9695
    },
    "kind": "borderline_match"
   },
@@ -14760,8 +15304,8 @@
     "source_id": "iicp_culture_table",
     "record_id": "iicp_culture_r597",
     "name": "מגדל תחמיץ",
-    "lat": null,
-    "lon": null,
+    "lat": 32.6631125,
+    "lon": 35.2267344,
     "locality": "שריד",
     "category_hint": "historic",
     "url": null
@@ -14769,13 +15313,11 @@
    "score": 0.79,
    "why": {
     "name_score": 1.0,
-    "distance_m": null,
+    "distance_m": 8.9,
     "gate_m": 300.0,
     "cross_category_types": true,
-    "mode": "name_only",
-    "locality_agrees": true,
-    "locality_unknown": false,
-    "generic_name": false
+    "mode": "blended",
+    "dist_score": 0.9703
    },
    "kind": "borderline_match"
   },
@@ -15008,40 +15550,6 @@
     "cross_category_types": true,
     "mode": "blended",
     "dist_score": 0.9605
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "declared_antiquities",
-    "record_id": "poly:7246",
-    "name": "באר טבעון",
-    "lat": 32.7140086,
-    "lon": 35.1409075,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "b": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r411",
-    "name": "באר טבעון",
-    "lat": null,
-    "lon": null,
-    "locality": "אלונים",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
    },
    "kind": "borderline_match"
   },
@@ -15432,40 +15940,6 @@
   {
    "a": {
     "source_id": "declared_antiquities",
-    "record_id": "poly:11278",
-    "name": "תל חנתון",
-    "lat": 32.7852481,
-    "lon": 35.2572101,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "b": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r497",
-    "name": "תל חנתון",
-    "lat": null,
-    "lon": null,
-    "locality": "חנתון",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "declared_antiquities",
     "record_id": "poly:34180",
     "name": "מערות סער (צפון)",
     "lat": 32.6181051,
@@ -15833,40 +16307,6 @@
     "lat": null,
     "lon": null,
     "locality": null,
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "declared_antiquities",
-    "record_id": "survey:853373b6-f2b8-4f7b-a82c-5039807404c4",
-    "name": "באר־טבעון",
-    "lat": 32.7130802,
-    "lon": 35.1428382,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "b": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r411",
-    "name": "באר טבעון",
-    "lat": null,
-    "lon": null,
-    "locality": "אלונים",
     "category_hint": "archaeological",
     "url": null
    },
@@ -16665,6 +17105,38 @@
   },
   {
    "a": {
+    "source_id": "heritage_official",
+    "record_id": "candidate_lead_check:None",
+    "name": "אתר רכבת העמק כפר יהושע (תחנת תל א-שמאם)",
+    "lat": 32.671861,
+    "lon": 35.1528,
+    "locality": null,
+    "category_hint": "historic",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r529",
+    "name": "אתר רכבת העמק כפר יהושע",
+    "lat": 32.6716875,
+    "lon": 35.1529375,
+    "locality": "כפר יהושע",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.79,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 23.2,
+    "gate_m": 300.0,
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.9227
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "iaa_cluster_table",
     "record_id": "iaa_cluster_r02",
     "name": "בית שערים",
@@ -16780,8 +17252,8 @@
     "source_id": "iicp_culture_table",
     "record_id": "iicp_culture_r411",
     "name": "באר טבעון",
-    "lat": null,
-    "lon": null,
+    "lat": 32.7133125,
+    "lon": 35.1419375,
     "locality": "אלונים",
     "category_hint": "archaeological",
     "url": null
@@ -17448,40 +17920,6 @@
   {
    "a": {
     "source_id": "iaa_discover",
-    "record_id": "declared_site:29359",
-    "name": "באר טבעון",
-    "lat": 32.7140112,
-    "lon": 35.1409108,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": "https://discover.iaa.org.il/?entityId=29359&entityType=hachraza"
-   },
-   "b": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r411",
-    "name": "באר טבעון",
-    "lat": null,
-    "lon": null,
-    "locality": "אלונים",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iaa_discover",
     "record_id": "declared_site:30087",
     "name": "תל שדוד",
     "lat": 32.6599207,
@@ -17508,40 +17946,6 @@
     "cross_category_types": true,
     "mode": "blended",
     "dist_score": 0.6567
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iaa_discover",
-    "record_id": "declared_site:30248",
-    "name": "תל חנתון",
-    "lat": 32.7852508,
-    "lon": 35.2572133,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": "https://discover.iaa.org.il/?entityId=30248&entityType=hachraza"
-   },
-   "b": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r497",
-    "name": "תל חנתון",
-    "lat": null,
-    "lon": null,
-    "locality": "חנתון",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
    },
    "kind": "borderline_match"
   },
@@ -17781,40 +18185,6 @@
     "url": "https://survey.iaa.org.il/#/MapSurvey/26"
    },
    "b": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r411",
-    "name": "באר טבעון",
-    "lat": null,
-    "lon": null,
-    "locality": "אלונים",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iaa_discover",
-    "record_id": "survey_site:3426",
-    "name": "באר־טבעון",
-    "lat": 32.7131545,
-    "lon": 35.1429052,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": "https://survey.iaa.org.il/#/MapSurvey/26"
-   },
-   "b": {
     "source_id": "osm_wikidata",
     "record_id": "osm:node/5723976421",
     "name": "באר טבעון",
@@ -17850,8 +18220,8 @@
     "source_id": "iicp_culture_table",
     "record_id": "iicp_culture_r532",
     "name": "תל שמאם",
-    "lat": null,
-    "lon": null,
+    "lat": 32.6700625,
+    "lon": 35.1560625,
     "locality": "כפר יהושע",
     "category_hint": "archaeological",
     "url": null
@@ -17859,13 +18229,11 @@
    "score": 0.79,
    "why": {
     "name_score": 0.9883,
-    "distance_m": null,
+    "distance_m": 37.1,
     "gate_m": 400.0,
     "cross_category_types": true,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": false
+    "mode": "blended",
+    "dist_score": 0.9072
    },
    "kind": "borderline_match"
   },
@@ -18000,44 +18368,10 @@
   {
    "a": {
     "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r407",
-    "name": "בית העם",
-    "lat": null,
-    "lon": null,
-    "locality": "אלוני אבא",
-    "category_hint": "culture",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "osm:way/1014445107",
-    "name": "בית העם",
-    "lat": 32.73227035,
-    "lon": 35.17097680551397,
-    "locality": null,
-    "category_hint": "culture",
-    "url": "https://www.openstreetmap.org/way/1014445107"
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 200.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
     "record_id": "iicp_culture_r411",
     "name": "באר טבעון",
-    "lat": null,
-    "lon": null,
+    "lat": 32.7133125,
+    "lon": 35.1419375,
     "locality": "אלונים",
     "category_hint": "archaeological",
     "url": null
@@ -18055,81 +18389,11 @@
    "score": 0.79,
    "why": {
     "name_score": 1.0,
-    "distance_m": null,
+    "distance_m": 72.8,
     "gate_m": 350.0,
     "cross_category_types": true,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r417",
-    "name": "בית העם",
-    "lat": null,
-    "lon": null,
-    "locality": "בית לחם הגלילית",
-    "category_hint": "culture",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "osm:way/1014445107",
-    "name": "בית העם",
-    "lat": 32.73227035,
-    "lon": 35.17097680551397,
-    "locality": null,
-    "category_hint": "culture",
-    "url": "https://www.openstreetmap.org/way/1014445107"
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 200.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r423",
-    "name": "גן לאומי בית שערים",
-    "lat": null,
-    "lon": null,
-    "locality": "בית שערים",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "osm:way/1111885862",
-    "name": "גן לאומי בית שערים",
-    "lat": 32.7019664,
-    "lon": 35.1247689705889,
-    "locality": null,
-    "category_hint": "historic",
-    "url": "https://www.openstreetmap.org/way/1111885862"
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 350.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
+    "mode": "blended",
+    "dist_score": 0.7919
    },
    "kind": "borderline_match"
   },
@@ -18170,136 +18434,64 @@
   {
    "a": {
     "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r497",
-    "name": "תל חנתון",
-    "lat": null,
-    "lon": null,
-    "locality": "חנתון",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "osm:node/839668534",
-    "name": "תל חנתון",
-    "lat": 32.7857024,
-    "lon": 35.2563854,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": "https://www.openstreetmap.org/node/839668534"
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r515",
-    "name": "בית העם",
-    "lat": null,
-    "lon": null,
-    "locality": "כפר ברוך",
-    "category_hint": "culture",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "osm:way/1014445107",
-    "name": "בית העם",
-    "lat": 32.73227035,
-    "lon": 35.17097680551397,
-    "locality": null,
-    "category_hint": "culture",
-    "url": "https://www.openstreetmap.org/way/1014445107"
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 200.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r526",
-    "name": "בית העם",
-    "lat": null,
-    "lon": null,
-    "locality": "כפר יהושע",
-    "category_hint": "culture",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "osm:way/1014445107",
-    "name": "בית העם",
-    "lat": 32.73227035,
-    "lon": 35.17097680551397,
-    "locality": null,
-    "category_hint": "culture",
-    "url": "https://www.openstreetmap.org/way/1014445107"
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 200.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r530",
-    "name": "מגדל המים",
-    "lat": null,
-    "lon": null,
+    "record_id": "iicp_culture_r529",
+    "name": "אתר רכבת העמק כפר יהושע",
+    "lat": 32.6716875,
+    "lon": 35.1529375,
     "locality": "כפר יהושע",
     "category_hint": "historic",
     "url": null
    },
    "b": {
     "source_id": "osm_wikidata",
-    "record_id": "wd:Q115089760",
-    "name": "מגדל המים",
-    "lat": 32.673262762,
-    "lon": 35.254851229,
+    "record_id": "wd:Q6372216",
+    "name": "תחנת הרכבת כפר יהושע",
+    "lat": 32.671861,
+    "lon": 35.1528,
     "locality": null,
     "category_hint": "historic",
-    "url": "http://www.wikidata.org/entity/Q115089760"
+    "url": "http://www.wikidata.org/entity/Q6372216"
    },
    "score": 0.79,
    "why": {
-    "name_score": 1.0,
-    "distance_m": null,
+    "name_score": 0.9694,
+    "distance_m": 23.2,
     "gate_m": 300.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.9227
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r541",
+    "name": "משטרת נהלל",
+    "lat": 32.7025625,
+    "lon": 35.1883125,
+    "locality": "מנשייה זבדה",
+    "category_hint": "historic",
+    "url": null
+   },
+   "b": {
+    "source_id": "osm_wikidata",
+    "record_id": "wd:Q16129579",
+    "name": "משטרת נהלל",
+    "lat": 32.701972222,
+    "lon": 35.187916666,
+    "locality": "נהלל",
+    "category_hint": "historic",
+    "url": "http://www.wikidata.org/entity/Q16129579"
+   },
+   "score": 0.79,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 75.4,
+    "gate_m": 300.0,
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.7488
    },
    "kind": "borderline_match"
   },
@@ -18327,108 +18519,6 @@
    "score": 0.79,
    "why": {
     "name_score": 0.9959,
-    "distance_m": null,
-    "gate_m": 300.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r573",
-    "name": "קבר רבי יהודה הנשיא",
-    "lat": null,
-    "lon": null,
-    "locality": "ציפורי",
-    "category_hint": "archaeological",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "osm:way/745362514",
-    "name": "קבר רבי יהודה הנשיא",
-    "lat": 32.70321335,
-    "lon": 35.12872904827118,
-    "locality": null,
-    "category_hint": "archaeological",
-    "url": "https://www.openstreetmap.org/way/745362514"
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 400.0,
-    "cross_category_types": true,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": false
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r588",
-    "name": "מגדל המים",
-    "lat": null,
-    "lon": null,
-    "locality": "רמת דוד",
-    "category_hint": "historic",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "wd:Q115089760",
-    "name": "מגדל המים",
-    "lat": 32.673262762,
-    "lon": 35.254851229,
-    "locality": null,
-    "category_hint": "historic",
-    "url": "http://www.wikidata.org/entity/Q115089760"
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
-    "distance_m": null,
-    "gate_m": 300.0,
-    "cross_category_types": false,
-    "mode": "name_only",
-    "locality_agrees": false,
-    "locality_unknown": true,
-    "generic_name": true
-   },
-   "kind": "borderline_match"
-  },
-  {
-   "a": {
-    "source_id": "iicp_culture_table",
-    "record_id": "iicp_culture_r596",
-    "name": "מגדל המים",
-    "lat": null,
-    "lon": null,
-    "locality": "שריד",
-    "category_hint": "historic",
-    "url": null
-   },
-   "b": {
-    "source_id": "osm_wikidata",
-    "record_id": "wd:Q115089760",
-    "name": "מגדל המים",
-    "lat": 32.673262762,
-    "lon": 35.254851229,
-    "locality": null,
-    "category_hint": "historic",
-    "url": "http://www.wikidata.org/entity/Q115089760"
-   },
-   "score": 0.79,
-   "why": {
-    "name_score": 1.0,
     "distance_m": null,
     "gate_m": 300.0,
     "cross_category_types": false,
@@ -19693,6 +19783,38 @@
   },
   {
    "a": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r408",
+    "name": "כנסיית ולדהיים",
+    "lat": 32.7299375,
+    "lon": 35.1711875,
+    "locality": "אלוני אבא",
+    "category_hint": "historic",
+    "url": null
+   },
+   "b": {
+    "source_id": "osm_wikidata",
+    "record_id": "wd:Q86004381",
+    "name": "הכנסייה באלוני אבא",
+    "lat": 32.729998751,
+    "lon": 35.171121756,
+    "locality": "אלוני אבא",
+    "category_hint": "historic",
+    "url": "http://www.wikidata.org/entity/Q86004381"
+   },
+   "score": 0.7763,
+   "why": {
+    "name_score": 0.6475,
+    "distance_m": 9.2,
+    "gate_m": 300.0,
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.9694
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "poly:26407",
     "name": "שיח' אבו זריק, אל-",
@@ -20717,6 +20839,38 @@
   },
   {
    "a": {
+    "source_id": "iaa_discover",
+    "record_id": "survey_site:22441",
+    "name": "תל שמרון",
+    "lat": 32.7050581,
+    "lon": 35.2154347,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://survey.iaa.org.il/#/MapSurvey/2154"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r628",
+    "name": "תל שימרון",
+    "lat": 32.7036875,
+    "lon": 35.2143125,
+    "locality": "תמרת",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7642,
+   "why": {
+    "name_score": 0.9155,
+    "distance_m": 185.1,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.5373
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "survey:ad75a011-13a9-4b20-8753-8ae5fa9eafd9",
     "name": "עֵין זָרִיק",
@@ -20840,6 +20994,70 @@
     "cross_category_types": false,
     "mode": "blended",
     "dist_score": 0.7207
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "declared_antiquities",
+    "record_id": "poly:7949",
+    "name": "תל שמרון",
+    "lat": 32.7050072,
+    "lon": 35.2155693,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r628",
+    "name": "תל שימרון",
+    "lat": 32.7036875,
+    "lon": 35.2143125,
+    "locality": "תמרת",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7613,
+   "why": {
+    "name_score": 0.9155,
+    "distance_m": 188.0,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.5299
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "iaa_discover",
+    "record_id": "declared_site:29639",
+    "name": "תל שמרון",
+    "lat": 32.7050099,
+    "lon": 35.2155725,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://discover.iaa.org.il/?entityId=29639&entityType=hachraza"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r628",
+    "name": "תל שימרון",
+    "lat": 32.7036875,
+    "lon": 35.2143125,
+    "locality": "תמרת",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7608,
+   "why": {
+    "name_score": 0.9155,
+    "distance_m": 188.5,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.5288
    },
    "kind": "borderline_match"
   },
@@ -21869,6 +22087,38 @@
   },
   {
    "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0053",
+    "name": "מקלחת ציבורית חדשה",
+    "lat": 32.678333,
+    "lon": 35.201667,
+    "locality": "רמת דוד",
+    "category_hint": "historic",
+    "url": "https://he.wikipedia.org/wiki/פורטל:אתרי_מורשת_בישראל/שלטים_כחולים"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r586",
+    "name": "מקלחת ציבורית ראשונה",
+    "lat": 32.6788625,
+    "lon": 35.2028906,
+    "locality": "רמת דוד",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.7472,
+   "why": {
+    "name_score": 0.8649,
+    "distance_m": 128.8,
+    "gate_m": 300.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.5708
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "poly:21397",
     "name": "ח' לד",
@@ -22285,6 +22535,38 @@
   },
   {
    "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0076",
+    "name": "הבית הגדול",
+    "lat": 32.605833,
+    "lon": 35.309167,
+    "locality": "מרחביה (קיבוץ)",
+    "category_hint": "historic",
+    "url": "https://shimur.org/signs/הבית-הגדול/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r545",
+    "name": "החצר הגדולה במרחביה",
+    "lat": 32.6059375,
+    "lon": 35.3095625,
+    "locality": "מרחביה (קיבוץ)",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.7434,
+   "why": {
+    "name_score": 0.6586,
+    "distance_m": 38.8,
+    "gate_m": 300.0,
+    "cross_category_types": true,
+    "mode": "blended",
+    "dist_score": 0.8706
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "survey:464da98b-4626-4772-8e8b-da938b037d46",
     "name": "ח'רבת שומשיה",
@@ -22669,6 +22951,38 @@
   },
   {
    "a": {
+    "source_id": "iaa_discover",
+    "record_id": "survey_site:22439",
+    "name": "תל שמרון",
+    "lat": 32.7041563,
+    "lon": 35.2165012,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://survey.iaa.org.il/#/MapSurvey/2154"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r628",
+    "name": "תל שימרון",
+    "lat": 32.7036875,
+    "lon": 35.2143125,
+    "locality": "תמרת",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.738,
+   "why": {
+    "name_score": 0.9155,
+    "distance_m": 211.3,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.4717
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "survey:39ecbc0b-10a4-4309-9f7b-93200f759751",
     "name": "תֵּל שׁוֹר",
@@ -22894,6 +23208,38 @@
   {
    "a": {
     "source_id": "declared_antiquities",
+    "record_id": "poly:29904",
+    "name": "ח' יפתחאל",
+    "lat": 32.7568528,
+    "lon": 35.2294478,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r404",
+    "name": "תל יפתחאל",
+    "lat": 32.7551875,
+    "lon": 35.2278125,
+    "locality": "אלון הגליל",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7358,
+   "why": {
+    "name_score": 0.96,
+    "distance_m": 240.2,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.3996
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "declared_antiquities",
     "record_id": "survey:1ecb5637-44be-460b-ade9-63fda86a6815",
     "name": "ח'רבת חאלאדיה",
     "lat": 32.7536788,
@@ -22952,6 +23298,102 @@
     "cross_category_types": false,
     "mode": "blended",
     "dist_score": 0.7509
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "iaa_discover",
+    "record_id": "declared_site:33222",
+    "name": "טבעון",
+    "lat": 32.7149124,
+    "lon": 35.1398435,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://discover.iaa.org.il/?entityId=33222&entityType=hachraza"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r411",
+    "name": "באר טבעון",
+    "lat": 32.7133125,
+    "lon": 35.1419375,
+    "locality": "אלונים",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7354,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 264.6,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.3384
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "iaa_discover",
+    "record_id": "declared_site:51865",
+    "name": "ח' יפתחאל",
+    "lat": 32.7568558,
+    "lon": 35.2294514,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://discover.iaa.org.il/?entityId=51865&entityType=hachraza"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r404",
+    "name": "תל יפתחאל",
+    "lat": 32.7551875,
+    "lon": 35.2278125,
+    "locality": "אלון הגליל",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7354,
+   "why": {
+    "name_score": 0.96,
+    "distance_m": 240.6,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.3984
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "declared_antiquities",
+    "record_id": "poly:11645",
+    "name": "טבעון",
+    "lat": 32.7149094,
+    "lon": 35.1398399,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r411",
+    "name": "באר טבעון",
+    "lat": 32.7133125,
+    "lon": 35.1419375,
+    "locality": "אלונים",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7353,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 264.7,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.3384
    },
    "kind": "borderline_match"
   },
@@ -23533,6 +23975,38 @@
   },
   {
    "a": {
+    "source_id": "culture_institutions",
+    "record_id": "ci_023",
+    "name": "הגלריה לאמנות עכשווית במוזיאון עין דור",
+    "lat": 32.65699673924898,
+    "lon": 35.41721642028279,
+    "locality": "עין דור",
+    "category_hint": "culture",
+    "url": "https://eindormuseum.co.il/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r561",
+    "name": "המוזיאון הארכיאולוגי בקבוץ עין דור",
+    "lat": 32.6570625,
+    "lon": 35.4170625,
+    "locality": "עין דור",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7265,
+   "why": {
+    "name_score": 0.5873,
+    "distance_m": 16.2,
+    "gate_m": 250.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.9354
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "poly:7387",
     "name": "בית שערים",
@@ -23592,6 +24066,38 @@
     "cross_category_types": true,
     "mode": "blended",
     "dist_score": 0.465
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "declared_antiquities",
+    "record_id": "survey:7508fca7-b784-46a2-a8d8-0ae52f9849be",
+    "name": "תל שמרון 2",
+    "lat": 32.7049886,
+    "lon": 35.2142996,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r628",
+    "name": "תל שימרון",
+    "lat": 32.7036875,
+    "lon": 35.2143125,
+    "locality": "תמרת",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7256,
+   "why": {
+    "name_score": 0.7838,
+    "distance_m": 144.7,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.6383
    },
    "kind": "borderline_match"
   },
@@ -23661,6 +24167,38 @@
   },
   {
    "a": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r545",
+    "name": "החצר הגדולה במרחביה",
+    "lat": 32.6059375,
+    "lon": 35.3095625,
+    "locality": "מרחביה (קיבוץ)",
+    "category_hint": "historic",
+    "url": null
+   },
+   "b": {
+    "source_id": "osm_wikidata",
+    "record_id": "wd:Q6976834",
+    "name": "הקואופרציה במרחביה",
+    "lat": 32.6058,
+    "lon": 35.3092,
+    "locality": null,
+    "category_hint": "culture",
+    "url": "http://www.wikidata.org/entity/Q6976834"
+   },
+   "score": 0.7241,
+   "why": {
+    "name_score": 0.6395,
+    "distance_m": 37.2,
+    "gate_m": 250.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.851
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "poly:22929",
     "name": "בית שערים",
@@ -23725,6 +24263,70 @@
   },
   {
    "a": {
+    "source_id": "declared_antiquities",
+    "record_id": "survey:707fb7e4-fa55-4163-97ab-195b73357d76",
+    "name": "טבעון",
+    "lat": 32.714882,
+    "lon": 35.1396371,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r411",
+    "name": "באר טבעון",
+    "lat": 32.7133125,
+    "lon": 35.1419375,
+    "locality": "אלונים",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7229,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 277.1,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.3073
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "iaa_discover",
+    "record_id": "survey_site:3425",
+    "name": "טבעון",
+    "lat": 32.7149561,
+    "lon": 35.1397039,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://survey.iaa.org.il/#/MapSurvey/26"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r411",
+    "name": "באר טבעון",
+    "lat": 32.7133125,
+    "lon": 35.1419375,
+    "locality": "אלונים",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7224,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 277.6,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.306
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "culture_institutions",
     "record_id": "ci_007",
     "name": "בית העם אלוני אבא",
@@ -23752,6 +24354,38 @@
     "cross_category_types": true,
     "mode": "blended",
     "dist_score": 0.4402
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "blue_signs",
+    "record_id": "blue_signs_wp_0054",
+    "name": "מקלחת ציבורית ראשונה",
+    "lat": 32.678611,
+    "lon": 35.203056,
+    "locality": "רמת דוד",
+    "category_hint": "historic",
+    "url": "https://he.wikipedia.org/wiki/פורטל:אתרי_מורשת_בישראל/שלטים_כחולים"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r585",
+    "name": "בית המדגרה הראשון",
+    "lat": 32.6785625,
+    "lon": 35.2033281,
+    "locality": "רמת דוד",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.7214,
+   "why": {
+    "name_score": 0.5935,
+    "distance_m": 26.0,
+    "gate_m": 300.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.9132
    },
    "kind": "borderline_match"
   },
@@ -23944,6 +24578,38 @@
     "cross_category_types": false,
     "mode": "blended",
     "dist_score": 0.2949
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "heritage_official",
+    "record_id": "shimur_blue_sign:50644",
+    "name": "בית הספר",
+    "lat": 32.6813439,
+    "lon": 35.152233,
+    "locality": "כפר יהושע",
+    "category_hint": "historic",
+    "url": "https://shimur.org/signs/בית-הספר-2/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r524",
+    "name": "בית הספר הישראלי לקרקס",
+    "lat": 32.6804375,
+    "lon": 35.1506875,
+    "locality": "כפר יהושע",
+    "category_hint": "culture",
+    "url": null
+   },
+   "score": 0.7179,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 176.3,
+    "gate_m": 250.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.2948
    },
    "kind": "borderline_match"
   },
@@ -24333,6 +24999,70 @@
   },
   {
    "a": {
+    "source_id": "culture_institutions",
+    "record_id": "ci_028",
+    "name": "מרחביה - החצר הגדולה, מרכז מבקרים",
+    "lat": 32.60555602474812,
+    "lon": 35.30987518624573,
+    "locality": "מרחביה (קיבוץ)",
+    "category_hint": "culture",
+    "url": "https://merchavyard.org.il/"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r545",
+    "name": "החצר הגדולה במרחביה",
+    "lat": 32.6059375,
+    "lon": 35.3095625,
+    "locality": "מרחביה (קיבוץ)",
+    "category_hint": "historic",
+    "url": null
+   },
+   "score": 0.7141,
+   "why": {
+    "name_score": 0.661,
+    "distance_m": 51.5,
+    "gate_m": 250.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.7938
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "declared_antiquities",
+    "record_id": "survey:b8d03939-5a47-4392-a23b-1a66ce3e20a1",
+    "name": "תל שמרון 4",
+    "lat": 32.7022834,
+    "lon": 35.2142993,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r628",
+    "name": "תל שימרון",
+    "lat": 32.7036875,
+    "lon": 35.2143125,
+    "locality": "תמרת",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7141,
+   "why": {
+    "name_score": 0.7838,
+    "distance_m": 156.1,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.6097
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
     "source_id": "declared_antiquities",
     "record_id": "survey:dafe9623-6e0f-49c5-ab44-56fac52be981",
     "name": "חוּרבת בית שערים",
@@ -24424,6 +25154,70 @@
     "cross_category_types": false,
     "mode": "blended",
     "dist_score": 0.3804
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "iaa_discover",
+    "record_id": "declared_site:51864",
+    "name": "ח' יפתחאל",
+    "lat": 32.753249,
+    "lon": 35.2294505,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": "https://discover.iaa.org.il/?entityId=51864&entityType=hachraza"
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r404",
+    "name": "תל יפתחאל",
+    "lat": 32.7551875,
+    "lon": 35.2278125,
+    "locality": "אלון הגליל",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7116,
+   "why": {
+    "name_score": 0.96,
+    "distance_m": 264.4,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.3389
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "declared_antiquities",
+    "record_id": "poly:19295",
+    "name": "ח' יפתחאל",
+    "lat": 32.7532464,
+    "lon": 35.2294472,
+    "locality": null,
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r404",
+    "name": "תל יפתחאל",
+    "lat": 32.7551875,
+    "lon": 35.2278125,
+    "locality": "אלון הגליל",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "score": 0.7115,
+   "why": {
+    "name_score": 0.96,
+    "distance_m": 264.5,
+    "gate_m": 400.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.3388
    },
    "kind": "borderline_match"
   },
@@ -25768,6 +26562,38 @@
     "cross_category_types": false,
     "mode": "blended",
     "dist_score": 0.2583
+   },
+   "kind": "borderline_match"
+  },
+  {
+   "a": {
+    "source_id": "iicp_culture_table",
+    "record_id": "iicp_culture_r628",
+    "name": "תל שימרון",
+    "lat": 32.7036875,
+    "lon": 35.2143125,
+    "locality": "תמרת",
+    "category_hint": "archaeological",
+    "url": null
+   },
+   "b": {
+    "source_id": "osm_wikidata",
+    "record_id": "osm:way/325413034",
+    "name": "שמורת טבע שימרון",
+    "lat": 32.701352299999996,
+    "lon": 35.21397703804814,
+    "locality": null,
+    "category_hint": "historic",
+    "url": "https://www.openstreetmap.org/way/325413034"
+   },
+   "score": 0.7011,
+   "why": {
+    "name_score": 1.0,
+    "distance_m": 261.6,
+    "gate_m": 350.0,
+    "cross_category_types": false,
+    "mode": "blended",
+    "dist_score": 0.2527
    },
    "kind": "borderline_match"
   },

@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 import geo  # noqa: E402
 import hebrew as he  # noqa: E402
+import plus_code  # noqa: E402
 import schema as sc  # noqa: E402
 import vocabmap as vm  # noqa: E402
 
@@ -72,6 +73,63 @@ def known_localities() -> set[str]:
             names.add(clean(r["שם יישוב"]))
     _LOCALITIES = {he.key(n) for n in names if he.key(n)}
     return _LOCALITIES
+
+
+_SETTLE_COORDS: dict[str, tuple[float, float]] | None = None
+
+
+def settlement_coords() -> dict[str, tuple[float, float]]:
+    global _SETTLE_COORDS
+    if _SETTLE_COORDS is not None:
+        return _SETTLE_COORDS
+    out: dict[str, tuple[float, float]] = {}
+    p = RAW / "settlements_emek_yizrael.json"
+    if p.exists():
+        data = json.loads(p.read_text(encoding="utf-8"))
+        rows = data if isinstance(data, list) else (data.get("settlements") or [])
+        for r in rows:
+            if isinstance(r, dict) and r.get("name_he") and r.get("lat") is not None:
+                out[r["name_he"].strip()] = (r["lat"], r["lon"])
+    _SETTLE_COORDS = out
+    return out
+
+
+def settlement_ref(name: str | None) -> tuple[float, float] | None:
+    """Reference coordinate for a settlement, tolerating spelling variants (גניגר / גיניגר)."""
+    if not name:
+        return None
+    table = settlement_coords()
+    name = str(name).strip()
+    if name in table:
+        return table[name]
+    best, score = None, 0.0
+    for k, v in table.items():
+        s = he.similarity(name, k)
+        if s > score:
+            best, score = v, s
+    return best if score >= 0.85 else None
+
+
+def coords_from_plus_code(raw_code, settlement) -> tuple[float, float] | None:
+    """Decode a Plus Code against its settlement. Offline, exact, verified to about 5 m."""
+    code = plus_code.parse(raw_code)
+    if not code:
+        return None
+    ref = settlement_ref(settlement)
+    if not ref:
+        return None
+    try:
+        lat, lon = plus_code.recover(code, *ref)
+    except plus_code.PlusCodeError:
+        return None
+    # A short code is only meaningful near its reference, so refuse a result that lands far
+    # from the settlement it was recorded in rather than trusting the arithmetic blindly.
+    if geo.haversine_m(lat, lon, ref[0], ref[1]) > 8000:
+        return None
+    if not (geo.PLAUSIBLE["lat"][0] <= lat <= geo.PLAUSIBLE["lat"][1]
+            and geo.PLAUSIBLE["lon"][0] <= lon <= geo.PLAUSIBLE["lon"][1]):
+        return None
+    return lat, lon
 
 
 def sane_locality(value) -> str | None:
@@ -297,9 +355,26 @@ def adapt_iicp_culture_table() -> list[dict]:
             # resolves it from first-party evidence.
             pass
 
-        lat, lon = r.get("lat"), r.get("lon")
         desc = clean(r.get("תיאור (מה זה)"))
         locality = clean(r.get("שם יישוב"))
+
+        # Most rows carry a Google Plus Code instead of a coordinate. A Plus Code IS the
+        # coordinate, base-20 encoded, so it is decoded here rather than left as an address
+        # nobody geocoded. Without this the institute's own inventory contributed 34 positions
+        # out of 184 and its culture institutions were missing from the map entirely.
+        lat, lon = r.get("lat"), r.get("lon")
+        precision = "approx_100m" if lat is not None else "unknown"
+        code_used = None
+        if lat is None:
+            got = coords_from_plus_code(
+                r.get("_plus_code_local") or r.get("קוד כתובת (גוגל)"), locality)
+            if got:
+                lat, lon = got
+                code_used = plus_code.parse(
+                    r.get("_plus_code_local") or r.get("קוד כתובת (גוגל)"))
+                # A ten-digit code resolves to about a 14 m cell, and the 24 rows that carry
+                # both a code and a coordinate agreed to a median of 4 m.
+                precision = "approx_100m"
 
         # Contact details for a private-sector record can belong to a person rather than an
         # institution, so they are kept internally and redacted at publish time.
@@ -311,7 +386,7 @@ def adapt_iicp_culture_table() -> list[dict]:
             category_hint=cat,
             type=vm.site_type(desc, name, r.get("תחום")),
             lat=lat, lon=lon,
-            location_precision="approx_100m" if lat is not None else "unknown",
+            location_precision=precision,
             locality=locality,
             statuses=st,
             practical={
@@ -330,6 +405,7 @@ def adapt_iicp_culture_table() -> list[dict]:
                 "web_presence_score": r.get("הנגשה - קיום ידע במרשתת"),
                 "notes": clean(r.get("הערות")),
                 "google_plus_code": clean(r.get("קוד כתובת (גוגל)")),
+                "position_from_plus_code": code_used,
                 "contact_is_private_sector": sector == "פרטי",
             },
             raw={k: v for k, v in r.items()

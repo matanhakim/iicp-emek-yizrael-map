@@ -1057,6 +1057,15 @@ function renderMetrics() {
 function renderAbout() {
   const V = S.vocab;
   $('#aboutInner').replaceChildren(
+    el('div', { class: 'about-mark' },
+      el('a', {
+        href: 'https://iicp.org.il', target: '_blank', rel: 'noopener',
+        'aria-label': 'המכון הישראלי למדיניות תרבות, לאתר המכון',
+      }, el('img', {
+        src: 'assets/iicp-logo.svg', alt: 'המכון הישראלי למדיניות תרבות',
+        width: '686', height: '141',
+      })),
+      el('p', { text: 'המפה נבנתה ומתוחזקת על ידי המכון הישראלי למדיניות תרבות.' })),
     el('h2', { text: 'על המפה' }),
     el('div', { class: 'prose' },
       el('p', { text: `המפה מרכזת אתרים ארכאולוגיים, אתרים היסטוריים ומוסדות תרבות פעילים בתחום השיפוט של מועצה אזורית עמק יזרעאל, ומאחדת אותם למאגר אחד שבו לכל נקודה מקורות מזוהים, סטטוסים ורמת ודאות מוצהרת. היא נבנתה על ידי המכון הישראלי למדיניות תרבות.` }),

@@ -164,6 +164,17 @@ button, input, select { font: inherit; color: inherit; }
   border-block-end: 1px solid var(--hairline);
   z-index: 20;
 }
+/* The institute's mark leads, then a hairline, then what this particular map is. The logo
+   inherits the ink colour, so the same file works on the light and the dark chrome. */
+.brandmark {
+  display: flex; align-items: center; flex: none;
+  color: var(--ink); text-decoration: none;
+  padding-inline-end: 1rem;
+  border-inline-end: 1px solid var(--hairline);
+}
+.brandmark img { display: block; height: 1.9rem; width: auto; }
+.brandmark:hover { color: var(--ink-2); }
+
 .brand { display: flex; align-items: baseline; gap: .6rem; min-width: 0; }
 .brand h1 {
   font-size: var(--step-3); letter-spacing: -.01em; white-space: nowrap;
@@ -518,6 +529,14 @@ html[dir='rtl'] .hbar-row .track { border-radius: var(--radius) 0 0 var(--radius
 .meter .fill[data-tone='bad'] { background: var(--bad); }
 .meter .note { font-size: .7rem; color: var(--ink-muted); margin-top: .2rem; }
 
+.about-mark {
+  padding-block-end: 1.25rem; margin-block-end: 1.25rem;
+  border-block-end: 1px solid var(--hairline);
+  color: var(--ink);
+}
+.about-mark img { display: block; height: 2.6rem; width: auto; max-width: 100%; }
+.about-mark p { margin: .7rem 0 0; font-size: var(--step-0); color: var(--ink-3); }
+
 .prose { font-size: var(--step-0); color: var(--ink-2); line-height: 1.7; max-width: 44rem; }
 .prose h3 { font-size: var(--step-2); color: var(--ink); margin: 1.4rem 0 .4rem; }
 .prose p { margin: 0 0 .7rem; }
@@ -558,9 +577,16 @@ html[dir='rtl'] .hbar-row .track { border-radius: var(--radius) 0 0 var(--radius
   .brand .sub { display: none; }
   .brand h1 { font-size: var(--step-2); }
   .topbar { gap: .6rem; padding: .5rem .75rem; }
+  .brandmark { padding-inline-end: .6rem; }
+  .brandmark img { height: 1.4rem; }
   .detail { width: 100%; }
   .metrics-inner { padding: 1rem 1rem 4rem; }
   .kv { grid-template-columns: 7rem 1fr; }
+}
+@media (max-width: 44rem) {
+  /* Below this the full lockup and the map title cannot both fit, and the title is what tells
+     a visitor where they are. The mark returns on the About tab. */
+  .brandmark { display: none; }
 }
 @media (max-width: 34rem) {
   .count-live { font-size: var(--step-1); }
