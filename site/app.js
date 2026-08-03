@@ -127,8 +127,11 @@ async function boot() {
   for (let i = 0; i < 18; i++) {
     bars.append(el('i', { style: `animation-delay:${i * 28}ms` }));
   }
+  // 'no-cache' revalidates against the server rather than skipping the cache: an unchanged file
+  // still comes from cache via its ETag, but an updated map is never served stale. Without this
+  // a returning visitor kept seeing the previous build's data under the new interface.
   try {
-    const payload = await (await fetch(DATA_URL)).json();
+    const payload = await (await fetch(DATA_URL, { cache: 'no-cache' })).json();
     S.vocab = payload.vocab;
     S.sites = payload.sites;
     S.generated = payload.generated;
@@ -137,7 +140,9 @@ async function boot() {
     $('#loading').innerHTML = '<p>לא הצלחנו לטעון את הנתונים. רעננו את הדף או נסו שוב מאוחר יותר.</p>';
     return;
   }
-  try { S.boundary = await (await fetch(BOUNDARY_URL)).json(); } catch (e) { S.boundary = null; }
+  try {
+    S.boundary = await (await fetch(BOUNDARY_URL, { cache: 'no-cache' })).json();
+  } catch (e) { S.boundary = null; }
 
   for (const axis of Object.keys(S.vocab.status_axes)) F.status[axis] = new Set();
   F.status.reg_summary = new Set();
@@ -638,7 +643,7 @@ async function select(id) {
   }
   if (!S.claims) {
     try {
-      const j = await (await fetch(CLAIMS_URL)).json();
+      const j = await (await fetch(CLAIMS_URL, { cache: 'no-cache' })).json();
       S.claims = j.claims || {};
       S.detail = j.detail || {};
     } catch (e) { S.claims = {}; S.detail = {}; }
