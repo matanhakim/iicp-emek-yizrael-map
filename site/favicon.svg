@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- A tel in section: three strata with the 1700 line above the lowest two. -->
+  <rect width="32" height="32" rx="5" fill="#edefe9"/>
+  <path d="M4 26h24l-5-6H9z" fill="#a65a2a"/>
+  <path d="M9 20h14l-3.2-4h-7.6z" fill="#b03a6b" opacity=".85"/>
+  <rect x="4" y="12.4" width="24" height="1.6" fill="#1c231f"/>
+  <path d="M12.2 12.4h7.6l-2.4-3.4h-2.8z" fill="#2c5f9e"/>
+</svg>

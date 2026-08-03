@@ -1,0 +1,21 @@
+# Raw and intermediate data stay out of git: every one of them is reproducible from the code
+# in src/ plus the source documentation in docs/sources/. data/out/ IS committed, because the
+# harmonized store is the deliverable.
+data/raw/
+data/interim/
+data/verify/
+
+# site/vendor/ and site/fonts/ ARE committed on purpose. The published page must make zero
+# third-party requests apart from map tiles, so MapLibre and the two typefaces are served from
+# the same origin and the deployment stays a plain static copy of site/.
+
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+Thumbs.db
+
+# Never
+.env
+*.local.*
+secrets/

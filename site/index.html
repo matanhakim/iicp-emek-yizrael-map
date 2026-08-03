@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>אתרי תרבות ומורשת בעמק יזרעאל | המכון הישראלי למדיניות תרבות</title>
+<meta name="description" content="מפה אינטראקטיבית של אתרים ארכאולוגיים, אתרים היסטוריים ומוסדות תרבות פעילים בתחום השיפוט של מועצה אזורית עמק יזרעאל. כל נקודה עם מקורות, סטטוס ורמת ודאות.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="אתרי תרבות ומורשת בעמק יזרעאל">
+<meta property="og:description" content="מפה אינטראקטיבית של אתרים ארכאולוגיים, אתרים היסטוריים ומוסדות תרבות פעילים בעמק יזרעאל.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="vendor/maplibre-gl.css">
+<link rel="stylesheet" href="app.css">
+<link rel="preload" href="fonts/Assistant-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/FrankRuhlLibre-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">דלגו לתוכן המרכזי</a>
+
+<div class="app">
+
+  <header class="topbar">
+    <button class="icon-btn rail-toggle" id="railToggle" aria-expanded="false" aria-controls="rail" aria-label="פתחו את מסננים">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <path d="M2 4h12M4.5 8h7M6.5 12h3"/>
+      </svg>
+    </button>
+
+    <div class="brand">
+      <h1>אתרי תרבות ומורשת בעמק יזרעאל</h1>
+      <span class="sub">מועצה אזורית עמק יזרעאל</span>
+    </div>
+
+    <span class="spacer"></span>
+
+    <p class="count-live" aria-live="polite" aria-atomic="true">
+      <span id="countN">0</span> <small id="countLabel">נקודות</small>
+    </p>
+
+    <div class="tabs" role="tablist" aria-label="תצוגות">
+      <button role="tab" id="tab-map" aria-selected="true" aria-controls="view-map" data-view="map">מפה</button>
+      <button role="tab" id="tab-table" aria-selected="false" aria-controls="view-table" data-view="table" tabindex="-1">טבלה</button>
+      <button role="tab" id="tab-metrics" aria-selected="false" aria-controls="view-metrics" data-view="metrics" tabindex="-1">נתוני סיכום</button>
+      <button role="tab" id="tab-about" aria-selected="false" aria-controls="view-about" data-view="about" tabindex="-1">על המפה</button>
+    </div>
+
+    <button class="icon-btn" id="themeToggle" aria-label="החלפה בין מצב בהיר וכהה" title="החלפה בין מצב בהיר וכהה">
+      <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="8" cy="8" r="3.2"/><path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3.1 3.1l1.1 1.1M11.8 11.8l1.1 1.1M12.9 3.1l-1.1 1.1M4.2 11.8l-1.1 1.1" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <div class="body">
+
+    <!-- ================================================== filter rail -->
+    <aside class="rail" id="rail" aria-label="מסננים">
+
+      <div class="search-wrap">
+        <label class="vh" for="q">חיפוש לפי שם, יישוב או סוג</label>
+        <input type="search" id="q" placeholder="חיפוש שם, יישוב או סוג" autocomplete="off">
+        <button class="clear" id="qClear" hidden aria-label="נקו את החיפוש">
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg>
+        </button>
+      </div>
+
+      <fieldset class="fgroup">
+        <legend>קטגוריה</legend>
+        <div class="cats" id="cats"></div>
+      </fieldset>
+
+      <!-- The signature element: the period filter drawn as a stratigraphic section,
+           oldest at the bottom, with the 1700 line where the Antiquities Law ends. -->
+      <fieldset class="fgroup">
+        <legend id="strataLegend">חתך תקופות</legend>
+        <div class="strata" id="strata" role="group" aria-labelledby="strataLegend"></div>
+        <p class="strata-caption" id="strataCaption"></p>
+      </fieldset>
+
+      <div id="facets"></div>
+
+      <div class="rail-actions">
+        <button class="btn" id="resetBtn">נקו הכל</button>
+        <button class="btn" id="csvBtn">הורדת CSV</button>
+      </div>
+    </aside>
+
+    <!-- ======================================================== stage -->
+    <main class="stage" id="main">
+
+      <div class="loading" id="loading">
+        <div class="bars" aria-hidden="true"></div>
+        <p>טוענים את שכבות הנתונים</p>
+      </div>
+
+      <div id="view-map" role="tabpanel" aria-labelledby="tab-map">
+        <div id="map" role="application" aria-label="מפת אתרי תרבות ומורשת בעמק יזרעאל. תצוגת הטבלה מציגה את אותם הנתונים בצורה נגישה למקלדת ולקורא מסך."></div>
+        <div class="map-overlay">
+          <div class="basemap-switch" role="group" aria-label="מפת בסיס">
+            <button data-base="ihm" aria-pressed="true">שבילי ישראל</button>
+            <button data-base="osm" aria-pressed="false">OSM</button>
+            <button data-base="sat" aria-pressed="false">תצלום אוויר</button>
+          </div>
+          <p class="attrib" id="attrib"></p>
+        </div>
+      </div>
+
+      <div id="view-table" role="tabpanel" aria-labelledby="tab-table" hidden>
+        <div class="tablewrap" id="tablewrap"></div>
+      </div>
+
+      <div id="view-metrics" role="tabpanel" aria-labelledby="tab-metrics" hidden>
+        <div class="metrics"><div class="metrics-inner" id="metricsInner"></div></div>
+      </div>
+
+      <div id="view-about" role="tabpanel" aria-labelledby="tab-about" hidden>
+        <div class="metrics"><div class="metrics-inner" id="aboutInner"></div></div>
+      </div>
+
+      <!-- detail panel, slides over the stage -->
+      <section class="detail" id="detail" data-open="false" aria-label="פרטי האתר" tabindex="-1">
+        <div class="detail-head">
+          <span id="dGlyph" class="glyph" aria-hidden="true"></span>
+          <div style="min-width:0;flex:1">
+            <h2 id="dName">—</h2>
+            <p class="meta" id="dMeta"></p>
+          </div>
+          <button class="icon-btn" id="dClose" aria-label="סגרו את פרטי האתר">
+            <svg width="13" height="13" viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg>
+          </button>
+        </div>
+        <div class="detail-body" id="dBody"></div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<div id="tip" role="tooltip" hidden style="position:fixed;z-index:300;pointer-events:none;background:var(--ink);color:var(--surface);font-size:.72rem;padding:.25rem .5rem;border-radius:3px;box-shadow:var(--shadow-pop);max-width:16rem;line-height:1.4"></div>
+
+<script src="vendor/maplibre-gl.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
