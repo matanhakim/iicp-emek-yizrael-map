@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 import hebrew as he  # noqa: E402
 import paths  # noqa: E402
+import redact  # noqa: E402
 import schema as sc  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -122,19 +123,17 @@ def run() -> dict:
             rec["display_name"] = s.get("name")
         rec["rest"] = {k: s.get(k) for k in REST if s.get(k) not in (None, [], {}, "")}
 
-        private = any((e or {}).get("contact_is_private_sector")
-                      for e in (s.get("extra") or {}).values())
-        if private:
-            hit = False
-            for f in REDACT_WHEN_PRIVATE:
-                if rec["rest"].pop(f, None) is not None:
-                    hit = True
-            rec["rest"]["contact_withheld"] = True
-            redacted += hit
+        # Every published artifact passes the redaction gate, including the claim log. See
+        # src/redact.py for why this is a gate and not a step.
+        rec, removed = redact.redact_site(rec)
+        if removed:
+            redacted += 1
 
         slim.append(rec)
         if s.get("claims"):
-            claims[s["id"]] = s["claims"]
+            kept = redact.redact_claims(s["claims"])
+            if kept:
+                claims[s["id"]] = kept
         # The per-source `extra` payload is the richest part of the record and the heaviest,
         # so it rides in the lazily fetched file next to the claim log rather than in the
         # payload the map needs before it can paint.
@@ -142,7 +141,9 @@ def run() -> dict:
             ex = {k: dict(v) for k, v in s["extra"].items() if v}
             for v in ex.values():
                 v.pop("contact_is_private_sector", None)
-            detail[s["id"]] = ex
+            # Source `extra` blocks carry free text lifted from pages that sometimes print a
+            # mailbox inside a sentence, so the whole structure is scrubbed, not just its fields.
+            detail[s["id"]] = redact.scrub_deep(ex)
 
     payload = {
         "generated": None,  # stamped by the caller; scripts must not read the clock

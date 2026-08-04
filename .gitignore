@@ -4,6 +4,11 @@
 data/raw/
 data/interim/
 data/verify/
+# data/out/ is the PRE-redaction internal store. It was committed to this public repository and
+# leaked 24 personal email addresses, because redaction only ran when building the site payload.
+# The published artifacts are site/data/, which pass src/redact.py. Headline figures are
+# recorded in docs/00-state.md instead.
+data/out/
 # data/manual/ IS committed: it is curated input that cannot be regenerated from code.
 !data/manual/
 # data/frozen/ IS committed: the gzipped inputs the pipeline reads, about 8 MB, so a fresh

@@ -13,6 +13,7 @@ Run:  python src/freeze.py            build or refresh the archive
 from __future__ import annotations
 
 import gzip
+import json
 import shutil
 import sys
 from pathlib import Path
@@ -20,6 +21,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 import paths  # noqa: E402
+import redact  # noqa: E402
 
 
 def gz_copy(src: Path, dst: Path) -> tuple[int, int]:
@@ -27,6 +29,23 @@ def gz_copy(src: Path, dst: Path) -> tuple[int, int]:
     with src.open("rb") as f_in, gzip.open(dst, "wb", compresslevel=9) as f_out:
         shutil.copyfileobj(f_in, f_out, length=1024 * 1024)
     return src.stat().st_size, dst.stat().st_size
+
+
+def gz_redacted(src: Path, dst: Path, redactor) -> tuple[int, int, dict]:
+    """Redact a payload before archiving it, because data/frozen/ is committed PUBLICLY.
+
+    This archive is committed, so it is a published artifact and has to pass the same gate as
+    the map. Archiving the raw institute table would have put its 81 individual-person rows and
+    their contact details in a public repository, which is exactly what Matan asked to avoid.
+    """
+    rows = paths.read_json(src)
+    if not isinstance(rows, list):
+        return (*gz_copy(src, dst), {"note": "not a row list; copied unchanged"})
+    cleaned, report = redactor(rows)
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.open(dst, "wt", encoding="utf-8", compresslevel=9) as f:
+        json.dump(cleaned, f, ensure_ascii=False)
+    return src.stat().st_size, dst.stat().st_size, report
 
 
 def build() -> dict:
@@ -44,11 +63,17 @@ def build() -> dict:
             else:
                 report["skipped"].append(f"{name}: MISSING from both working copy and archive")
             continue
-        raw, frozen = gz_copy(src, dst)
+        if name.endswith(".geojson"):
+            raw, frozen = gz_copy(src, dst)          # geometry only, no personal data
+            note = ""
+        else:
+            raw, frozen, det = gz_redacted(src, dst, lambda rows, n=name: redact.redact_payload(n, rows))
+            det = {k: v for k, v in det.items() if v}
+            note = ("  redacted: " + ", ".join(f"{k}={v}" for k, v in det.items())) if det else ""
         report["raw_mb"] += raw / 1e6
         report["frozen_mb"] += frozen / 1e6
         report["written"].append(
-            f"{name}: {raw/1e6:.1f} MB -> {frozen/1e6:.2f} MB ({raw/max(frozen,1):.1f}x)")
+            f"{name}: {raw/1e6:.1f} MB -> {frozen/1e6:.2f} MB ({raw/max(frozen,1):.1f}x){note}")
 
     report["raw_mb"] = round(report["raw_mb"], 1)
     report["frozen_mb"] = round(report["frozen_mb"], 2)

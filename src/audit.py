@@ -286,6 +286,30 @@ def audit_classification(sites):
 
 
 # --------------------------------------------------------------------------------------
+def audit_published_privacy() -> dict:
+    """Fail loudly if a published artifact carries personal contact data.
+
+    This exists because it already happened: 24 personal email addresses reached the public
+    repository through claims.json and through the pre-redaction store. A check that runs every
+    build is the only version of this guarantee worth having.
+    """
+    import re as _re
+    site_data = ROOT / "site" / "data"
+    mail = _re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
+    found: dict[str, list[str]] = {}
+    for p in sorted(site_data.glob("*.json")):
+        hits = sorted(set(mail.findall(p.read_text(encoding="utf-8"))))
+        if hits:
+            found[p.name] = hits
+            for h in hits:
+                add("high", "published_personal_contact",
+                    f"כתובת דואר אלקטרוני נותרה בתוצר שמתפרסם ({p.name}): {h}")
+    tracked_store = ROOT / "data" / "out" / "sites.json"
+    return {"files_checked": len(list(site_data.glob("*.json"))),
+            "emails_found": {k: len(v) for k, v in found.items()},
+            "pre_redaction_store_present_locally": tracked_store.exists()}
+
+
 def main():
     sites = json.loads((OUT / "sites.json").read_text(encoding="utf-8"))
     report = {
@@ -295,6 +319,7 @@ def main():
         "provenance": audit_provenance(sites),
         "geometry": audit_geometry(sites),
         "classification": audit_classification(sites),
+        "published_privacy": audit_published_privacy(),
     }
     sev = Counter(f["severity"] for f in findings)
     report["findings_by_severity"] = dict(sev)
