@@ -101,7 +101,14 @@ class Jurisdiction:
 
     @classmethod
     def from_geojson(cls, path: str | Path):
-        data = json.loads(Path(path).read_text(encoding="utf-8"))
+        # The boundary may be stored gzipped in the frozen archive, so decompress transparently.
+        p = Path(path)
+        if p.suffix == ".gz":
+            import gzip
+            with gzip.open(p, "rt", encoding="utf-8") as f:
+                data = json.load(f)
+        else:
+            data = json.loads(p.read_text(encoding="utf-8"))
         geoms = []
         if data.get("type") == "FeatureCollection":
             geoms = [shape(f["geometry"]) for f in data["features"] if f.get("geometry")]

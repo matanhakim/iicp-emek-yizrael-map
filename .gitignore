@@ -6,6 +6,10 @@ data/interim/
 data/verify/
 # data/manual/ IS committed: it is curated input that cannot be regenerated from code.
 !data/manual/
+# data/frozen/ IS committed: the gzipped inputs the pipeline reads, about 8 MB, so a fresh
+# clone can rebuild the published map without the 336 MB of original downloads.
+# Built by python src/freeze.py.
+!data/frozen/
 
 # site/vendor/ and site/fonts/ ARE committed on purpose. The published page must make zero
 # third-party requests apart from map tiles, so MapLibre and the two typefaces are served from

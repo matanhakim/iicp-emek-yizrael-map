@@ -36,6 +36,7 @@ from pathlib import Path
 
 import geo
 import hebrew as he
+import paths
 import schema as sc
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -794,16 +795,10 @@ _SETTLEMENTS: list[dict] = []
 def load_settlements() -> int:
     """Load the council's settlements with coordinates, for the derived nearest-settlement field."""
     _SETTLEMENTS.clear()
-    p = ROOT / "data" / "raw" / "settlements_emek_yizrael.json"
-    if not p.exists():
-        return 0
-    data = json.loads(p.read_text(encoding="utf-8"))
-    rows = data if isinstance(data, list) else (
-        data.get("settlements") or data.get("records") or [])
-    for r in rows:
+    for r in paths.settlements():
         # Only inhabited localities make a useful answer to "which settlement's land is this
         # on". Statistical open-area zones and industrial codes are not places anyone knows.
-        if not isinstance(r, dict) or r.get("category") != "residential_locality":
+        if r.get("category") != "residential_locality":
             continue
         if r.get("lat") is None or not r.get("name_he"):
             continue
@@ -837,19 +832,11 @@ def load_locality_heads() -> int:
     locality column of the claims themselves, which is sourced data either way.
     """
     names: set[str] = set()
-    p = ROOT / "data" / "raw" / "settlements_emek_yizrael.json"
-    if p.exists():
-        data = json.loads(p.read_text(encoding="utf-8"))
-        rows = data if isinstance(data, list) else (
-            data.get("settlements") or data.get("records") or [])
-        for r in rows:
-            if isinstance(r, str):
-                names.add(r)
-            elif isinstance(r, dict):
-                for k in ("name_he", "name", "shem_yishuv", "שם יישוב", "settlement"):
-                    if r.get(k):
-                        names.add(str(r[k]))
-                        break
+    for r in paths.settlements():
+        for k in ("name_he", "name", "shem_yishuv", "שם יישוב", "settlement"):
+            if r.get(k):
+                names.add(str(r[k]))
+                break
     for f in sorted(INTERIM.glob("*.claims.json")):
         for r in json.loads(f.read_text(encoding="utf-8")):
             if r.get("locality"):
@@ -961,8 +948,8 @@ def run(boundary_path: Path | None = None) -> dict:
     n_heads = load_locality_heads()
     n_settl = load_settlements()
     jur = None
-    bp = boundary_path or (ROOT / "data" / "raw" / "boundary_emek_yizrael.geojson")
-    if Path(bp).exists():
+    bp = boundary_path or paths.boundary_file()
+    if bp and Path(bp).exists():
         jur = geo.Jurisdiction.from_geojson(bp)
 
     clusters, review, blocked = cluster(claims)

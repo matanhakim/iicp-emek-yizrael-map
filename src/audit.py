@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 import geo  # noqa: E402
 import hebrew as he  # noqa: E402
+import paths  # noqa: E402
 import schema as sc  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -198,8 +199,8 @@ def audit_provenance(sites):
 # --------------------------------------------------------------------------------------
 def audit_geometry(sites):
     jur = None
-    bp = ROOT / "data" / "raw" / "boundary_emek_yizrael.geojson"
-    if bp.exists():
+    bp = paths.boundary_file()
+    if bp:
         jur = geo.Jurisdiction.from_geojson(bp)
     stats = Counter()
     for s in sites:

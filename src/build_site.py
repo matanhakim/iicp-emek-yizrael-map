@@ -20,6 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 import hebrew as he  # noqa: E402
+import paths  # noqa: E402
 import schema as sc  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -158,13 +159,19 @@ def run() -> dict:
     # resolve. The published copy is simplified to a 10 m tolerance purely for DRAWING; every
     # point-in-polygon decision in the pipeline uses the untouched original, so simplifying
     # here cannot move a site in or out of the council.
-    bnd = ROOT / "data" / "raw" / "boundary_emek_yizrael.geojson"
+    bnd = paths.boundary_file()
     bnd_stats = None
-    if bnd.exists():
+    if bnd:
         import geopandas as gpd
         from shapely.geometry import mapping
+        from shapely.geometry import shape as shp_shape
 
-        gdf = gpd.read_file(bnd).to_crs(2039)
+        # geopandas cannot read a .gz GeoJSON directly, so the frozen copy is loaded as JSON.
+        doc = paths.read_json(bnd)
+        feats = doc["features"] if doc.get("type") == "FeatureCollection" else [doc]
+        gdf = gpd.GeoDataFrame(
+            geometry=[shp_shape(f["geometry"]) for f in feats if f.get("geometry")],
+            crs=4326).to_crs(2039)
         simple = gdf.geometry.simplify(10, preserve_topology=True).to_crs(4326)
         before = sum(len(str(mapping(g))) for g in gdf.to_crs(4326).geometry)
         fc = {"type": "FeatureCollection", "features": [
@@ -173,7 +180,7 @@ def run() -> dict:
         (SITE_DATA / "boundary.geojson").write_text(
             json.dumps(fc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         bnd_stats = {"kb": round((SITE_DATA / "boundary.geojson").stat().st_size / 1024, 1),
-                     "original_kb": round(bnd.stat().st_size / 1024, 1)}
+                     "source": str(bnd.name)}
         del before
 
     stats_p = OUT / "harmonize_stats.json"

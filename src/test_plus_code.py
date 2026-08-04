@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 import geo  # noqa: E402
 import hebrew as he  # noqa: E402
+import paths  # noqa: E402
 import plus_code as pc  # noqa: E402
 
 
@@ -68,19 +69,14 @@ for lat, lon in [(32.6963, 35.1972), (32.7323, 35.1710), (-33.857, 151.215), (0.
 
 print("\n--- against the institute's own rows (short-code recovery) ---")
 settle = {}
-p = ROOT / "data" / "raw" / "settlements_emek_yizrael.json"
-if p.exists():
-    data = json.loads(p.read_text(encoding="utf-8"))
-    rows = data if isinstance(data, list) else (data.get("settlements") or [])
-    for r in rows:
-        if r.get("name_he") and r.get("lat") is not None:
-            settle[r["name_he"].strip()] = (r["lat"], r["lon"])
+for r in paths.settlements():
+    if r.get("name_he") and r.get("lat") is not None:
+        settle[r["name_he"].strip()] = (r["lat"], r["lon"])
 
-tbl = ROOT / "data" / "interim" / "iicp_culture_table.json"
-if not tbl.exists():
-    print("  (no interim table; run src/adapters.py inputs first)")
+B = paths.source_payload("iicp_culture_table.json")
+if B is None:
+    print("  (no institute table available, in the working copy or the frozen archive)")
 else:
-    B = json.loads(tbl.read_text(encoding="utf-8"))
     both = [r for r in B
             if r.get("_is_emek_yizrael_council") and not r.get("_excluded")
             and r.get("lat") is not None and r.get("_plus_code_local")]

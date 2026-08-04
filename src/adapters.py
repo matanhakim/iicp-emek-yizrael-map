@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 import geo  # noqa: E402
 import hebrew as he  # noqa: E402
+import paths  # noqa: E402
 import plus_code  # noqa: E402
 import schema as sc  # noqa: E402
 import vocabmap as vm  # noqa: E402
@@ -34,10 +35,8 @@ COUNCIL_NAME = "עמק יזרעאל"
 
 
 def load(name: str):
-    p = INTERIM / name
-    if not p.exists():
-        return None
-    return json.loads(p.read_text(encoding="utf-8"))
+    """A per-source payload, from the working copy or the frozen archive. See src/paths.py."""
+    return paths.source_payload(name)
 
 
 _LOCALITIES: set[str] | None = None
@@ -55,19 +54,11 @@ def known_localities() -> set[str]:
     if _LOCALITIES is not None:
         return _LOCALITIES
     names: set[str] = set()
-    p = RAW / "settlements_emek_yizrael.json"
-    if p.exists():
-        data = json.loads(p.read_text(encoding="utf-8"))
-        rows = data if isinstance(data, list) else (
-            data.get("settlements") or data.get("records") or [])
-        for r in rows:
-            if isinstance(r, str):
-                names.add(r)
-            elif isinstance(r, dict):
-                for k in ("name_he", "name", "shem_yishuv", "שם יישוב", "settlement"):
-                    if r.get(k):
-                        names.add(str(r[k]))
-                        break
+    for r in paths.settlements():
+        for k in ("name_he", "name", "shem_yishuv", "שם יישוב", "settlement"):
+            if r.get(k):
+                names.add(str(r[k]))
+                break
     for r in load("iicp_culture_table.json") or []:
         if r.get("_is_emek_yizrael_council") and clean(r.get("שם יישוב")):
             names.add(clean(r["שם יישוב"]))
@@ -83,13 +74,9 @@ def settlement_coords() -> dict[str, tuple[float, float]]:
     if _SETTLE_COORDS is not None:
         return _SETTLE_COORDS
     out: dict[str, tuple[float, float]] = {}
-    p = RAW / "settlements_emek_yizrael.json"
-    if p.exists():
-        data = json.loads(p.read_text(encoding="utf-8"))
-        rows = data if isinstance(data, list) else (data.get("settlements") or [])
-        for r in rows:
-            if isinstance(r, dict) and r.get("name_he") and r.get("lat") is not None:
-                out[r["name_he"].strip()] = (r["lat"], r["lon"])
+    for r in paths.settlements():
+        if r.get("name_he") and r.get("lat") is not None:
+            out[r["name_he"].strip()] = (r["lat"], r["lon"])
     _SETTLE_COORDS = out
     return out
 
@@ -1383,8 +1370,10 @@ NEEDS_JUR = {"declared_antiquities", "iaa_discover", "blue_signs", "osm_wikidata
 
 
 def run_all(only: list[str] | None = None) -> dict:
-    bnd = RAW / "boundary_emek_yizrael.geojson"
-    jur = geo.Jurisdiction.from_geojson(bnd) if bnd.exists() else None
+    bnd = paths.boundary_file()
+    jur = geo.Jurisdiction.from_geojson(bnd) if bnd else None
+    if jur is None:
+        print("  ! no boundary available; nothing can be scoped to the council")
     stats = {}
     for sid, fn in ADAPTERS.items():
         if only and sid not in only:
