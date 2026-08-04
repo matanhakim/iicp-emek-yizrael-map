@@ -91,6 +91,7 @@ def vocab() -> dict:
 
 
 def run() -> dict:
+    paths.ensure_writable()
     sites = json.loads((OUT / "sites.json").read_text(encoding="utf-8"))
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     # Settlement names must be registered before is_generic_name can recognise one.

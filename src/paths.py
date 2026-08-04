@@ -49,6 +49,17 @@ ESSENTIAL_RAW = [
 ]
 
 
+def ensure_writable() -> None:
+    """Create the directories the pipeline writes into.
+
+    A fresh clone has no data/interim/ because it is gitignored, so the first thing the adapters
+    tried to do was write a claims file into a directory that did not exist. Every entry point
+    calls this, which is why a clone can run the pipeline at all.
+    """
+    for d in (INTERIM, OUT, ROOT / "site" / "data"):
+        d.mkdir(parents=True, exist_ok=True)
+
+
 def _resolve(name: str, *dirs: Path) -> Path | None:
     """First existing candidate: a plain file, then its gzipped frozen twin."""
     for d in dirs:

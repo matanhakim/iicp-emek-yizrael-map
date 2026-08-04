@@ -944,6 +944,7 @@ def link_colocated(sites: list[dict], max_m: float = 200.0, min_sim: float = 0.8
 
 
 def run(boundary_path: Path | None = None) -> dict:
+    paths.ensure_writable()
     claims = load_claims()
     n_heads = load_locality_heads()
     n_settl = load_settlements()

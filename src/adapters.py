@@ -1370,6 +1370,7 @@ NEEDS_JUR = {"declared_antiquities", "iaa_discover", "blue_signs", "osm_wikidata
 
 
 def run_all(only: list[str] | None = None) -> dict:
+    paths.ensure_writable()
     bnd = paths.boundary_file()
     jur = geo.Jurisdiction.from_geojson(bnd) if bnd else None
     if jur is None:
